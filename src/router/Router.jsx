@@ -16,6 +16,10 @@ const Router = ({ children }) => {
           path: "/",
           element: <h1>Home</h1>,
         },
+        {
+          path: "/all-properties",
+          element: <h1>All properties</h1>,
+        },
       ],
     },
     {

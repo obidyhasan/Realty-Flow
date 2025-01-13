@@ -7,7 +7,7 @@ export default {
       colors: {
         primary: "#ABEF5F",
         "primary-light": "#ABEF5F80",
-        "text-black": "#1C1C1C",
+        "dark-01": "#1C1C1C",
       },
       fontFamily: {
         lato: ["Lato", "serif"],
