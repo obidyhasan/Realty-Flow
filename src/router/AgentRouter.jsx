@@ -1,11 +1,11 @@
-import { useState } from "react";
 import useUser from "../hooks/useUser";
 import LoadingLayout from "../layouts/LoadingLayout";
 import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const AgentRouter = ({ children }) => {
-  const { user, loading } = useState();
+  const { user, loading } = useAuth();
   const [userInfo, isPendingUser] = useUser();
 
   if (loading || isPendingUser) {
