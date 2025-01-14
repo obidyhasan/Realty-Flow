@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "1",
+    "propertyImage": "https://i.ibb.co.com/54NMtD7/lotus-design-n-print-Mcmcjg-Gk8u-M-unsplash.jpg",
+    "propertyLocation": "New York, USA",
+    "priceRange": {
+      "min": 500000,
+      "max": 700000
+    },
+    "verificationStatus": "Verified"
+  },
+  {
+    "_id": "2",
+    "propertyImage": "https://i.ibb.co.com/k3VvXMz/francesca-tosolini-Xy-Gv-Ej587-Mc-unsplash.jpg",
+    "propertyLocation": "Los Angeles, USA",
+    "priceRange": {
+      "min": 750000,
+      "max": 1000000
+    },
+    "verificationStatus": "Verified"
+  },
+  {
+    "_id": "3",
+    "propertyImage": "https://i.ibb.co.com/HCx0kpJ/francesca-tosolini-l43r-LPXCP1-M-unsplash.jpg",
+    "propertyLocation": "Chicago, USA",
+    "priceRange": {
+      "min": 400000,
+      "max": 600000
+    },
+    "verificationStatus": "Not Verified"
+  },
+  {
+    "_id": "4",
+    "propertyImage": "https://i.ibb.co.com/wLgJxmW/steven-ungermann-CVTm-LMv5o-G4-unsplash.jpg",
+    "propertyLocation": "Houston, USA",
+    "priceRange": {
+      "min": 300000,
+      "max": 500000
+    },
+    "verificationStatus": "Verified"
+  }
+]

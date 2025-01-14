@@ -44,7 +44,7 @@ const BannerSection = () => {
         </Swiper>
         <div className="z-10 w-full h-full bg-[#0000009f] absolute top-0 left-0">
           <div className="w-full h-full">
-            <div className="max-w-7xl h-full mx-auto px-5 flex flex-col items-center justify-center text-white text-center">
+            <div className="max-w-screen-2xl h-full mx-auto px-5 flex flex-col items-center justify-center text-white text-center">
               <h1 className="font-bold text-4xl leading-tight md:text-5xl lg:text-6xl max-w-4xl lg:leading-tight md:leading-tight ">
                 Your Gateway to{" "}
                 <span className="text-primary underline">Real Estate</span>{" "}
