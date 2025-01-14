@@ -16,7 +16,7 @@ const BannerSection = () => {
   }, []);
 
   return (
-    <div className="w-full h-[70vh]">
+    <div className="w-full h-[70vh] min-h-[500px]">
       <div className="relative">
         <Swiper
           spaceBetween={30}
@@ -26,12 +26,12 @@ const BannerSection = () => {
             disableOnInteraction: false,
           }}
           modules={[Autoplay]}
-          className="mySwiper w-full h-[70vh]"
+          className="mySwiper w-full h-[70vh]  min-h-[500px]"
         >
           {sliders.map((slider) => (
             <SwiperSlide key={slider._id}>
               <div>
-                <figure className=" w-full h-[70vh]">
+                <figure className=" w-full h-[70vh]  min-h-[500px]">
                   <img
                     src={slider.image}
                     className="w-full h-full object-cover object-center"
