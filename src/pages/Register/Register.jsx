@@ -4,11 +4,13 @@ import { Link, replace, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { showErrorToast, showSuccessToast } from "../../utility/ShowToast";
+import { useState } from "react";
 
 const IMAGE_HOSTING_KEY = import.meta.env.VITE_imgbb_api_key;
 const IMAGE_HOSTING_API = `https://api.imgbb.com/1/upload?key=${IMAGE_HOSTING_KEY}`;
 
 const Register = () => {
+  const [loadingBtn, setLoadingBtn] = useState(false);
   const { handelUserRegister, handelUserProfile, setLoading } = useAuth();
   const axiosPublic = useAxiosPublic();
   const location = useLocation();
@@ -21,6 +23,7 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    setLoadingBtn(true);
     await handelUserRegister(data.email, data.password)
       .then((res) => {
         const userUid = res?.user?.uid;
@@ -59,16 +62,19 @@ const Register = () => {
                           location.state ? location.state : "/",
                           replace
                         );
+                        setLoadingBtn(false);
                       }
                     })
                     .catch((error) => {
                       setLoading(false);
+                      setLoadingBtn(false);
                       console.log(error);
                       showErrorToast("Something went wrong!");
                     });
                 })
                 .catch((error) => {
                   setLoading(false);
+                  setLoadingBtn(false);
                   console.log(error);
                   showErrorToast(error.message);
                 });
@@ -76,12 +82,14 @@ const Register = () => {
           })
           .catch((error) => {
             setLoading(false);
+            setLoadingBtn(false);
             showErrorToast("Something went wrong!");
             console.log(error);
           });
       })
       .catch((error) => {
         setLoading(false);
+        setLoadingBtn(false);
         showErrorToast(error.message);
         console.log(error);
       });
@@ -171,8 +179,17 @@ const Register = () => {
               )}
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-primary hover:bg-primary-light border-none">
-                Register
+              <button
+                disabled={loadingBtn ? true : false}
+                className="btn bg-primary hover:bg-primary-light border-none disabled:bg-primary disabled:text-dark-01"
+              >
+                {loadingBtn ? (
+                  <>
+                    <span className="loading loading-spinner"></span> Register
+                  </>
+                ) : (
+                  "Register"
+                )}
               </button>
             </div>
           </form>
