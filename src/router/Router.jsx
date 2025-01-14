@@ -5,6 +5,8 @@ import NotFoundLayout from "../layouts/NotFoundLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PrivateRouter from "./PrivateRouter";
+import MainDashboard from "../pages/Dashboard/MainDashboard/MainDashboard";
+import Home from "../pages/Home/Home";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -15,13 +17,21 @@ const Router = ({ children }) => {
       children: [
         {
           path: "/",
-          element: <h1>Home</h1>,
+          element: <Home></Home>,
         },
         {
           path: "/all-properties",
           element: (
             <PrivateRouter>
               <h1>All properties</h1>
+            </PrivateRouter>
+          ),
+        },
+        {
+          path: "/dashboard",
+          element: (
+            <PrivateRouter>
+              <MainDashboard></MainDashboard>
             </PrivateRouter>
           ),
         },

@@ -27,6 +27,18 @@ const Navbar = () => {
       >
         All Properties
       </NavLink>
+      {user && (
+        <NavLink
+          to={"/dashboard"}
+          className={({ isActive }) =>
+            isActive
+              ? " underline-offset-2 text-dark-01 font-medium"
+              : "text-gray-600"
+          }
+        >
+          Dashboard
+        </NavLink>
+      )}
     </div>
   );
 
