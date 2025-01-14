@@ -1,15 +1,90 @@
 import { useForm } from "react-hook-form";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, replace, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { showErrorToast, showSuccessToast } from "../../utility/ShowToast";
+
+const IMAGE_HOSTING_KEY = import.meta.env.VITE_imgbb_api_key;
+const IMAGE_HOSTING_API = `https://api.imgbb.com/1/upload?key=${IMAGE_HOSTING_KEY}`;
 
 const Register = () => {
+  const { handelUserRegister, handelUserProfile, setLoading } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = async (data) => {
+    await handelUserRegister(data.email, data.password)
+      .then((res) => {
+        const userUid = res?.user?.uid;
+
+        // Upload image on img-bb server
+        const imageFile = { image: data?.image[0] };
+        axiosPublic
+          .post(IMAGE_HOSTING_API, imageFile, {
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          })
+          .then((result) => {
+            if (result.data?.success) {
+              const delete_image_url = result.data?.data?.delete_url;
+              const image_url = result.data?.data?.display_url;
+
+              handelUserProfile({ name: data.name, photo: image_url })
+                .then(() => {
+                  const userInfo = {
+                    name: data.name,
+                    image: image_url,
+                    userUid,
+                    email: data.email,
+                    delete_image_url,
+                    role: "User",
+                  };
+
+                  axiosPublic
+                    .post("/api/users", userInfo)
+                    .then((res) => {
+                      if (res.data.insertedId) {
+                        showSuccessToast("Register Successfully");
+                        setLoading(false);
+                        navigate(
+                          location.state ? location.state : "/",
+                          replace
+                        );
+                      }
+                    })
+                    .catch((error) => {
+                      setLoading(false);
+                      console.log(error);
+                      showErrorToast("Something went wrong!");
+                    });
+                })
+                .catch((error) => {
+                  setLoading(false);
+                  console.log(error);
+                  showErrorToast(error.message);
+                });
+            }
+          })
+          .catch((error) => {
+            setLoading(false);
+            showErrorToast("Something went wrong!");
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        setLoading(false);
+        showErrorToast(error.message);
+        console.log(error);
+      });
   };
 
   return (
@@ -68,7 +143,7 @@ const Register = () => {
                 <span className="label-text">Photo</span>
               </label>
               <input
-                {...register("photo", { required: true })}
+                {...register("image", { required: true })}
                 required
                 type="file"
                 className="file-input file-input-bordered w-full"
