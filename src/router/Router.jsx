@@ -7,6 +7,8 @@ import Register from "../pages/Register/Register";
 import PrivateRouter from "./PrivateRouter";
 import MainDashboard from "../pages/Dashboard/MainDashboard/MainDashboard";
 import Home from "../pages/Home/Home";
+import AgentRouter from "./AgentRouter";
+import AdminRouter from "./AdminRouter";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -55,40 +57,76 @@ const Router = ({ children }) => {
             // Agent Router
             {
               path: "/dashboard/agent/profile",
-              element: <h1>My Profile</h1>,
+              element: (
+                <AgentRouter>
+                  <h1>My Profile</h1>
+                </AgentRouter>
+              ),
             },
             {
               path: "/dashboard/agent/add-property",
-              element: <h1>Add Property</h1>,
+              element: (
+                <AgentRouter>
+                  <h1>Add Property</h1>
+                </AgentRouter>
+              ),
             },
             {
               path: "/dashboard/agent/added-properties",
-              element: <h1>My Added Properties</h1>,
+              element: (
+                <AgentRouter>
+                  <h1>My Added Properties</h1>
+                </AgentRouter>
+              ),
             },
             {
               path: "/dashboard/agent/sold-properties",
-              element: <h1>My Sold Properties</h1>,
+              element: (
+                <AgentRouter>
+                  <h1>My Sold Properties</h1>
+                </AgentRouter>
+              ),
             },
             {
               path: "/dashboard/agent/requested-properties",
-              element: <h1>Requested Properties</h1>,
+              element: (
+                <AgentRouter>
+                  <h1>Requested Properties</h1>
+                </AgentRouter>
+              ),
             },
             // Admin Router
             {
               path: "/dashboard/admin/profile",
-              element: <h1>Admin Profile</h1>,
+              element: (
+                <AdminRouter>
+                  <h1>Admin Profile</h1>
+                </AdminRouter>
+              ),
             },
             {
               path: "/dashboard/admin/manage-properties",
-              element: <h1>Manage Properties</h1>,
+              element: (
+                <AdminRouter>
+                  <h1>Manage Properties</h1>
+                </AdminRouter>
+              ),
             },
             {
               path: "/dashboard/admin/manage-users",
-              element: <h1>Manage Users</h1>,
+              element: (
+                <AdminRouter>
+                  <h1>Manage Users</h1>
+                </AdminRouter>
+              ),
             },
             {
               path: "/dashboard/admin/manage-reviews",
-              element: <h1>Manage Reviews</h1>,
+              element: (
+                <AdminRouter>
+                  <h1>Manage Reviews</h1>
+                </AdminRouter>
+              ),
             },
           ],
         },

@@ -2,12 +2,11 @@ import { useState } from "react";
 import useUser from "../hooks/useUser";
 import LoadingLayout from "../layouts/LoadingLayout";
 import PropTypes from "prop-types";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const AgentRouter = ({ children }) => {
   const { user, loading } = useState();
   const [userInfo, isPendingUser] = useUser();
-  const location = useLocation();
 
   if (loading || isPendingUser) {
     return <LoadingLayout></LoadingLayout>;
@@ -17,7 +16,7 @@ const AgentRouter = ({ children }) => {
     return children;
   }
 
-  return <Navigate to={"/login"} state={location.pathname} replace></Navigate>;
+  return <Navigate to={"/login"} replace></Navigate>;
 };
 
 AgentRouter.propTypes = {

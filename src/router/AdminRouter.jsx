@@ -1,13 +1,12 @@
 import PropTypes from "prop-types";
 import useAuth from "../hooks/useAuth";
 import useUser from "../hooks/useUser";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import LoadingLayout from "../layouts/LoadingLayout";
 
 const AdminRouter = ({ children }) => {
   const { user, loading } = useAuth();
   const [userInfo, isPendingUser] = useUser();
-  const location = useLocation();
 
   if (loading || isPendingUser) {
     return <LoadingLayout></LoadingLayout>;
@@ -17,7 +16,7 @@ const AdminRouter = ({ children }) => {
     return children;
   }
 
-  return <Navigate to={"/login"} state={location.pathname} replace></Navigate>;
+  return <Navigate to={"/login"} replace></Navigate>;
 };
 
 AdminRouter.propTypes = {
