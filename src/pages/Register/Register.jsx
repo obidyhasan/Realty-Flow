@@ -1,7 +1,17 @@
+import { useForm } from "react-hook-form";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="w-full min-h-screen font-poppins flex flex-col md:gap-0 md:flex-row">
       <div className="md:w-3/5">
@@ -25,12 +35,16 @@ const Register = () => {
 
         <div className="w-full max-w-sm my-20">
           <h1 className="font-bold text-3xl text-center">Create Account</h1>
-          <form className="mt-5 flex flex-col gap-2">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="mt-5 flex flex-col gap-2"
+          >
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
               <input
+                {...register("name", { required: true })}
                 type="text"
                 placeholder="name"
                 className="input input-bordered"
@@ -42,6 +56,7 @@ const Register = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+                {...register("email", { required: true })}
                 type="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -53,6 +68,8 @@ const Register = () => {
                 <span className="label-text">Photo</span>
               </label>
               <input
+                {...register("photo", { required: true })}
+                required
                 type="file"
                 className="file-input file-input-bordered w-full"
               />
@@ -62,11 +79,21 @@ const Register = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
+                {...register("password", {
+                  required: true,
+                  pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/,
+                })}
                 type="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
               />
+              {errors.password?.type === "pattern" && (
+                <label className="label text-red-500 text-xs">
+                  Password must be less than 6 characters, include at least one
+                  uppercase letter, and one special character.
+                </label>
+              )}
             </div>
             <div className="form-control mt-6">
               <button className="btn bg-primary hover:bg-primary-light border-none">

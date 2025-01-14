@@ -22,7 +22,7 @@ const Navbar = () => {
             : "text-gray-600"
         }
       >
-        All properties
+        All Properties
       </NavLink>
     </div>
   );
@@ -69,7 +69,7 @@ const Navbar = () => {
           <div className="">
             <Link
               to={"/login"}
-              className="btn rounded-full px-6 bg-primary-light border-none hover:bg-primary"
+              className="btn border-primary rounded-full px-6 bg-primary-light hover:border-primary hover:bg-primary"
             >
               Login
             </Link>
