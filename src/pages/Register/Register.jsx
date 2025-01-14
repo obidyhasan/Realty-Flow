@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { showErrorToast, showSuccessToast } from "../../utility/ShowToast";
 import { useState } from "react";
+import SocialLogin from "../../components/SocialLogin";
 
 const IMAGE_HOSTING_KEY = import.meta.env.VITE_imgbb_api_key;
 const IMAGE_HOSTING_API = `https://api.imgbb.com/1/upload?key=${IMAGE_HOSTING_KEY}`;
@@ -195,6 +196,7 @@ const Register = () => {
               Login
             </Link>
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

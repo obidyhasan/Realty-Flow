@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/favicon.ico";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, handelUserLogout } = useAuth();
+
   const navbarMenuLinks = (
     <div className="text-base flex flex-col lg:flex-row lg:gap-5 gap-2">
       <NavLink
@@ -28,9 +31,9 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-white sticky top-0 z-50">
+    <div className="bg-white sticky top-0 z-50 shadow-sm">
       <div className="max-w-screen-2xl mx-auto px-5">
-        <div className="navbar px-0 py-3 flex justify-between">
+        <div className="navbar px-0 py-3 flex gap-2 justify-between">
           <div className="">
             <div className="dropdown">
               <div tabIndex={0} role="button" className="lg:hidden mr-3">
@@ -58,7 +61,7 @@ const Navbar = () => {
             </div>
             <Link className="flex items-center gap-2">
               <img src={logo} className="hidden sm:flex" alt="" />
-              <span className="text-2xl font-bold text-dark-01">
+              <span className="text-xl sm:text-2xl font-bold text-dark-01">
                 Realty Flow
               </span>
             </Link>
@@ -67,12 +70,33 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{navbarMenuLinks}</ul>
           </div>
           <div className="">
-            <Link
-              to={"/login"}
-              className="btn border-primary rounded-full px-6 bg-primary-light hover:border-primary hover:bg-primary"
-            >
-              Login
-            </Link>
+            {user ? (
+              <div className="flex items-center justify-center gap-2">
+                <figure>
+                  <img
+                    src={`${user?.photoURL}`}
+                    className="w-11 h-11 object-cover rounded-full border"
+                    alt=""
+                  />
+                </figure>
+                <button
+                  onClick={() => handelUserLogout()}
+                  to={"/login"}
+                  className="btn border-primary rounded-full bg-primary-light hover:border-primary hover:bg-primary"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div>
+                <Link
+                  to={"/login"}
+                  className="btn border-primary rounded-full px-6 bg-primary-light hover:border-primary hover:bg-primary"
+                >
+                  Login
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { showErrorToast, showSuccessToast } from "../../utility/ShowToast";
+import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
   const [loadingBtn, setLoadingBtn] = useState(false);
@@ -54,7 +55,7 @@ const Login = () => {
           <span className="font-medium">Back To Home</span>
         </div>
 
-        <div className="w-full max-w-sm my-20">
+        <div className="w-full max-w-sm mt-20 mb-16">
           <h1 className="font-bold text-3xl text-center">Login</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
             <div className="form-control">
@@ -107,6 +108,10 @@ const Login = () => {
               Register
             </Link>
           </p>
+
+          <section className="">
+            <SocialLogin></SocialLogin>
+          </section>
         </div>
       </div>
     </div>

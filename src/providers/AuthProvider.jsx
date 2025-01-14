@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import AuthContext from "../contexts/AuthContext";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -22,6 +24,7 @@ const AuthProvider = ({ children }) => {
     handelUserRegister,
     handelUserProfile,
     handelUserLogout,
+    handelGoogleLogin,
   };
 
   useEffect(() => {
@@ -61,6 +64,11 @@ const AuthProvider = ({ children }) => {
       displayName: info.name,
       photoURL: info.photo,
     });
+  }
+
+  function handelGoogleLogin() {
+    const googleProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleProvider);
   }
 
   return (

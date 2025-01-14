@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import NotFoundLayout from "../layouts/NotFoundLayout";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRouter from "./PrivateRouter";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -18,7 +19,11 @@ const Router = ({ children }) => {
         },
         {
           path: "/all-properties",
-          element: <h1>All properties</h1>,
+          element: (
+            <PrivateRouter>
+              <h1>All properties</h1>
+            </PrivateRouter>
+          ),
         },
       ],
     },
