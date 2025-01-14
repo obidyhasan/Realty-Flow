@@ -24,10 +24,9 @@ const SocialLogin = () => {
 
         axiosPublic
           .post("/api/users", userInfo)
-          .then((res) => {
+          .then(() => {
             navigate(location.state ? location.state : "/", { replace: true });
             showSuccessToast("Sign up Successfully");
-            console.log(res);
           })
           .catch((error) => {
             console.log(error);
