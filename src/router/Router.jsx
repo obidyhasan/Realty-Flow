@@ -34,6 +34,63 @@ const Router = ({ children }) => {
               <MainDashboard></MainDashboard>
             </PrivateRouter>
           ),
+          children: [
+            // User Route
+            {
+              path: "/dashboard/user/profile",
+              element: <h1>User Profile</h1>,
+            },
+            {
+              path: "/dashboard/user/wishlist",
+              element: <h1>Wishlist</h1>,
+            },
+            {
+              path: "/dashboard/user/property-bought",
+              element: <h1>Property Bought</h1>,
+            },
+            {
+              path: "/dashboard/user/reviews",
+              element: <h1>My Reviews</h1>,
+            },
+            // Agent Router
+            {
+              path: "/dashboard/agent/profile",
+              element: <h1>My Profile</h1>,
+            },
+            {
+              path: "/dashboard/agent/add-property",
+              element: <h1>Add Property</h1>,
+            },
+            {
+              path: "/dashboard/agent/added-properties",
+              element: <h1>My Added Properties</h1>,
+            },
+            {
+              path: "/dashboard/agent/sold-properties",
+              element: <h1>My Sold Properties</h1>,
+            },
+            {
+              path: "/dashboard/agent/requested-properties",
+              element: <h1>Requested Properties</h1>,
+            },
+            // Admin Router
+            {
+              path: "/dashboard/admin/profile",
+              element: <h1>Admin Profile</h1>,
+            },
+            {
+              path: "/dashboard/admin/manage-properties",
+              element: <h1>Manage Properties</h1>,
+            },
+            {
+              path: "/dashboard/admin/manage-users",
+              element: <h1>Manage Users</h1>,
+            },
+            {
+              path: "/dashboard/admin/manage-reviews",
+              element: <h1>Manage Reviews</h1>,
+            },
+          ],
         },
       ],
     },
