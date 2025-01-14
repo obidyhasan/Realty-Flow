@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { Link, replace, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { showErrorToast, showSuccessToast } from "../../utility/ShowToast";
@@ -13,7 +13,6 @@ const Register = () => {
   const [loadingBtn, setLoadingBtn] = useState(false);
   const { handelUserRegister, handelUserProfile, setLoading } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const {
@@ -58,10 +57,7 @@ const Register = () => {
                       if (res.data.insertedId) {
                         showSuccessToast("Register Successfully");
                         setLoading(false);
-                        navigate(
-                          location.state ? location.state : "/",
-                          replace
-                        );
+                        navigate("/", { replace: true });
                         setLoadingBtn(false);
                       }
                     })
