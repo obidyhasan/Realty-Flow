@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "1",
+    "image": "https://i.ibb.co.com/54NMtD7/lotus-design-n-print-Mcmcjg-Gk8u-M-unsplash.jpg",
+    "title": "Modern Family Apartment",
+    "location": "Downtown City Center, NY",
+    "agent": {
+      "name": "Emily Parker",
+      "image": "https://i.ibb.co.com/HCx0kpJ/francesca-tosolini-l43r-LPXCP1-M-unsplash.jpg"
+    },
+    "verificationStatus": "Verified",
+    "priceRange": {
+      "min": 200000,
+      "max": 250000
+    }
+  },
+  {
+    "_id": "2",
+    "image": "https://i.ibb.co.com/k3VvXMz/francesca-tosolini-Xy-Gv-Ej587-Mc-unsplash.jpg",
+    "title": "Luxury Beachside Villa",
+    "location": "Miami Beach, FL",
+    "agent": {
+      "name": "James Thompson",
+      "image": "https://i.ibb.co.com/wLgJxmW/steven-ungermann-CVTm-LMv5o-G4-unsplash.jpg"
+    },
+    "verificationStatus": "Verified",
+    "priceRange": {
+      "min": 500000,
+      "max": 650000
+    }
+  },
+  {
+    "_id": "3",
+    "image": "https://i.ibb.co.com/HCx0kpJ/francesca-tosolini-l43r-LPXCP1-M-unsplash.jpg",
+    "title": "Cozy Suburban House",
+    "location": "Pleasantville, OH",
+    "agent": {
+      "name": "Sophia Lee",
+      "image": "https://i.ibb.co.com/54NMtD7/lotus-design-n-print-Mcmcjg-Gk8u-M-unsplash.jpg"
+    },
+    "verificationStatus": "Verified",
+    "priceRange": {
+      "min": 150000,
+      "max": 180000
+    }
+  },
+  {
+    "_id": "4",
+    "image": "https://i.ibb.co.com/wLgJxmW/steven-ungermann-CVTm-LMv5o-G4-unsplash.jpg",
+    "title": "Urban Studio Apartment",
+    "location": "Seattle Downtown, WA",
+    "agent": {
+      "name": "Daniel Carter",
+      "image": "https://i.ibb.co.com/k3VvXMz/francesca-tosolini-Xy-Gv-Ej587-Mc-unsplash.jpg"
+    },
+    "verificationStatus": "Verified",
+    "priceRange": {
+      "min": 120000,
+      "max": 140000
+    }
+  },
+  {
+    "_id": "5",
+    "image": "https://i.ibb.co.com/wLgJxmW/steven-ungermann-CVTm-LMv5o-G4-unsplash.jpg",
+    "title": "Elegant Mountain Retreat",
+    "location": "Aspen, CO",
+    "agent": {
+      "name": "Rachel Green",
+      "image": "https://i.ibb.co.com/wLgJxmW/steven-ungermann-CVTm-LMv5o-G4-unsplash.jpg"
+    },
+    "verificationStatus": "Verified",
+    "priceRange": {
+      "min": 800000,
+      "max": 950000
+    }
+  },
+  {
+    "_id": "6",
+    "image": "https://i.ibb.co.com/HCx0kpJ/francesca-tosolini-l43r-LPXCP1-M-unsplash.jpg",
+    "title": "Chic Urban Condo",
+    "location": "Brooklyn, NY",
+    "agent": {
+      "name": "Michael Scott",
+      "image": "https://i.ibb.co.com/HCx0kpJ/francesca-tosolini-l43r-LPXCP1-M-unsplash.jpg"
+    },
+    "verificationStatus": "Verified",
+    "priceRange": {
+      "min": 300000,
+      "max": 400000
+    }
+  },
+  {
+    "_id": "7",
+    "image": "https://i.ibb.co.com/k3VvXMz/francesca-tosolini-Xy-Gv-Ej587-Mc-unsplash.jpg",
+    "title": "Rustic Countryside Cottage",
+    "location": "Nashville, TN",
+    "agent": {
+      "name": "Olivia Johnson",
+      "image": "https://i.ibb.co.com/k3VvXMz/francesca-tosolini-Xy-Gv-Ej587-Mc-unsplash.jpg"
+    },
+    "verificationStatus": "Verified",
+    "priceRange": {
+      "min": 180000,
+      "max": 220000
+    }
+  },
+  {
+    "_id": "8",
+    "image": "https://i.ibb.co.com/54NMtD7/lotus-design-n-print-Mcmcjg-Gk8u-M-unsplash.jpg",
+    "title": "Serene Lakeside Home",
+    "location": "Lake Tahoe, CA",
+    "agent": {
+      "name": "Benjamin Brown",
+      "image": "https://i.ibb.co.com/54NMtD7/lotus-design-n-print-Mcmcjg-Gk8u-M-unsplash.jpg"
+    },
+    "verificationStatus": "Verified",
+    "priceRange": {
+      "min": 700000,
+      "max": 850000
+    }
+  }
+]

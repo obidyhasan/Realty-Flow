@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 const Headline = ({ headline, subHeadline }) => {
   return (
     <div className="text-center">
-      <h1 className="font-bold text-4xl">{headline}</h1>
-      <p className="max-w-2xl mx-auto mt-3">{subHeadline}</p>
+      <h1 className="font-bold md:text-4xl sm:text-3xl text-2xl ">
+        {headline}
+      </h1>
+      <p className="max-w-2xl mx-auto mt-2 sm:mt-3 sm:text-sm text-xs">
+        {subHeadline}
+      </p>
     </div>
   );
 };

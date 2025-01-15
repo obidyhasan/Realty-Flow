@@ -9,6 +9,7 @@ import MainDashboard from "../pages/Dashboard/MainDashboard/MainDashboard";
 import Home from "../pages/Home/Home";
 import AgentRouter from "./AgentRouter";
 import AdminRouter from "./AdminRouter";
+import AllProperties from "../pages/AllProperties/AllProperties";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -25,7 +26,7 @@ const Router = ({ children }) => {
           path: "/all-properties",
           element: (
             <PrivateRouter>
-              <h1>All properties</h1>
+              <AllProperties></AllProperties>
             </PrivateRouter>
           ),
         },
