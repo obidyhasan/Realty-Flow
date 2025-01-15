@@ -8,6 +8,8 @@ export default {
         primary: "#ABEF5F",
         "primary-light": "#ABEF5F80",
         "dark-01": "#1C1C1C",
+        deleteColor: "#fa3f19",
+        updateColor: "#f4a62a",
       },
       fontFamily: {
         lato: ["Lato", "serif"],

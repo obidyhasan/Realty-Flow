@@ -1,9 +1,44 @@
 import PropTypes from "prop-types";
 import { FaLocationArrow } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { showErrorToast, showSuccessToast } from "../utility/ShowToast";
+import useMyProperties from "../hooks/useMyProperties";
 
-const PropertyCard = ({ property }) => {
-  const { image, title, location, agent, verificationStatus, priceRange } =
+const PropertyCard = ({ property, fromAgent }) => {
+  const { _id, image, title, location, agent, verificationStatus, priceRange } =
     property;
+
+  const [, , refetch] = useMyProperties();
+  const axiosSecure = useAxiosSecure();
+
+  function handelPropertyDelete() {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to delete this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .delete(`/api/properties/${_id}`)
+          .then((res) => {
+            if (res.data.deletedCount) {
+              refetch();
+              showSuccessToast("Property delete successfully");
+              console.log(res.data);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            showErrorToast(error.message);
+          });
+      }
+    });
+  }
 
   return (
     <div className="p-4 flex flex-col border border-base-200 rounded-xl">
@@ -32,7 +67,7 @@ const PropertyCard = ({ property }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-[10px]">
         <hr className="border-base-200 mt-2" />
         <div className="flex gap-3 items-center">
           <img
@@ -42,9 +77,26 @@ const PropertyCard = ({ property }) => {
           />
           <h2 className="font-semibold">{agent.name}</h2>
         </div>
-        <button className="btn w-full bg-primary border-none hover:bg-primary-light">
-          View Details
-        </button>
+        {fromAgent ? (
+          <div className="flex gap-3 ">
+            <button
+              disabled={verificationStatus === "Rejected"}
+              className="btn flex-1 bg-updateColor text-white border-none hover:bg-updateColor"
+            >
+              Update
+            </button>
+            <button
+              onClick={handelPropertyDelete}
+              className="btn flex-1 text-white bg-deleteColor border-none hover:bg-deleteColor"
+            >
+              Delete
+            </button>
+          </div>
+        ) : (
+          <button className="btn w-full bg-primary border-none hover:bg-primary-light">
+            View Details
+          </button>
+        )}
       </div>
     </div>
   );
@@ -52,6 +104,7 @@ const PropertyCard = ({ property }) => {
 
 PropertyCard.propTypes = {
   property: PropTypes.object,
+  fromAgent: PropTypes.bool,
 };
 
 export default PropertyCard;

@@ -40,6 +40,7 @@ const AgentAddProperty = () => {
             agent: {
               name: user?.displayName,
               email: user?.email,
+              image: user?.photoURL,
             },
             verificationStatus: "Pending",
           };
