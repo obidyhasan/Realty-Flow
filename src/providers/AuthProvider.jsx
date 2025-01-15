@@ -11,8 +11,10 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const AuthProvider = ({ children }) => {
+  const axiosPublic = useAxiosPublic();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -32,16 +34,28 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
         setLoading(false);
+        // Get token and store on clint local storage
+        const userInfo = { email: currentUser?.email };
+        axiosPublic
+          .post("/api/jwt", userInfo)
+          .then((result) => {
+            if (result?.data?.token) {
+              localStorage.setItem("access-token", result?.data?.token);
+            }
+          })
+          .catch((error) => console.log(error));
       } else {
         setUser(null);
         setLoading(false);
+        // Remove token if user is logged out
+        localStorage.removeItem("access-token");
       }
     });
 
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [axiosPublic]);
 
   function handelUserLogin(email, password) {
     setLoading(true);
