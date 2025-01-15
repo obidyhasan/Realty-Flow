@@ -133,7 +133,7 @@ const MainDashboard = () => {
             {role === "Agent" && agentLink}
             {role === "Admin" && adminLink}
           </div>
-          <div className="md:col-span-1  lg:col-span-2 xl:col-span-3 sm:min-h-[85vh] border border-base-200 rounded-md p-4">
+          <div className="md:col-span-1  lg:col-span-2 xl:col-span-3 border border-base-200 rounded-md p-5">
             <Outlet></Outlet>
           </div>
         </div>

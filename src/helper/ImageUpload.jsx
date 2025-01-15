@@ -1,28 +1,30 @@
-import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import useAxiosPublic from "../hooks/useAxiosPublic";
-import { useState } from "react";
 
-const IMAGE_HOSTING_KEY = import.meta.env.VITE_imgbb_api_key;
-const IMAGE_HOSTING_API = `https://api.imgbb.com/1/upload?key=${IMAGE_HOSTING_KEY}`;
-
-const ImageUpload = ({ imageFile }) => {
+export const ImageUpload = (imageFile) => {
   const axiosPublic = useAxiosPublic();
+  const API_KEY = import.meta.env.VITE_imgbb_api_key;
   const [imageUrl, setImageUrl] = useState(null);
-  axiosPublic
-    .post(IMAGE_HOSTING_API, imageFile, {
-      "content-type": "multipart/form-data",
-    })
-    .then((res) => {
-      console.log(res);
-      setImageUrl(res.data?.data?.display_url);
-    })
-    .catch((error) => console.log(error));
 
-  return [imageUrl];
+  useEffect(() => {
+    axiosPublic
+      .post(`https://api.imgbb.com/1/upload?key=${API_KEY}`, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
+      .then((result) => {
+        if (result.data?.success) {
+          // const delete_image_url = result.data?.data?.delete_url;
+          const image_url = result.data?.data?.display_url;
+          setImageUrl(image_url);
+          console.log(image_url);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [API_KEY, axiosPublic, imageFile]);
+
+  return imageUrl;
 };
-
-ImageUpload.propTypes = {
-  imageFile: PropTypes.object,
-};
-
-export default ImageUpload;
