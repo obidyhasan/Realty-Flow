@@ -8,8 +8,8 @@ const AllProperties = () => {
 
   return (
     <div>
-      <div className="max-w-screen-2xl mx-auto px-5">
-        <div className="my-10">
+      <div className="max-w-screen-2xl mx-auto my-10 px-5">
+        <div className="">
           <Headline
             headline={"Explore All Properties"}
             subHeadline={
@@ -29,7 +29,7 @@ const AllProperties = () => {
         </div>
 
         {/* all properties card */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {properties.map((property) => (
             <PropertyCard key={property._id} property={property}></PropertyCard>
           ))}

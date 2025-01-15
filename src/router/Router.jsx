@@ -10,6 +10,7 @@ import Home from "../pages/Home/Home";
 import AgentRouter from "./AgentRouter";
 import AdminRouter from "./AdminRouter";
 import AllProperties from "../pages/AllProperties/AllProperties";
+import AgentProfile from "../pages/Dashboard/Agent/AgentProfile";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -60,7 +61,7 @@ const Router = ({ children }) => {
               path: "/dashboard/agent/profile",
               element: (
                 <AgentRouter>
-                  <h1>My Profile</h1>
+                  <AgentProfile></AgentProfile>
                 </AgentRouter>
               ),
             },
