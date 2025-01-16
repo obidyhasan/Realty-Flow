@@ -14,6 +14,7 @@ import AgentProfile from "../pages/Dashboard/Agent/AgentProfile";
 import AgentAddProperty from "../pages/Dashboard/Agent/AgentAddProperty";
 import AgentAddedProperties from "../pages/Dashboard/Agent/AgentAddedProperties";
 import AgentUpdateProperty from "../pages/Dashboard/Agent/AgentUpdateProperty";
+import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -113,7 +114,7 @@ const Router = ({ children }) => {
               path: "/dashboard/admin/profile",
               element: (
                 <AdminRouter>
-                  <h1>Admin Profile</h1>
+                  <AdminProfile></AdminProfile>
                 </AdminRouter>
               ),
             },

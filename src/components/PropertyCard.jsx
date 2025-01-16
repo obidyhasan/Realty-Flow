@@ -79,13 +79,16 @@ const PropertyCard = ({ property, fromAgent }) => {
         </div>
         {fromAgent ? (
           <div className="flex gap-3 ">
-            <Link
-              to={`/dashboard/agent/update-property/${_id}`}
-              disabled={verificationStatus === "Rejected"}
-              className="btn flex-1 bg-updateColor text-white border-none hover:bg-updateColor"
-            >
-              Update
-            </Link>
+            {verificationStatus === "Rejected" ? (
+              ""
+            ) : (
+              <Link
+                to={`/dashboard/agent/update-property/${_id}`}
+                className="btn flex-1 bg-updateColor text-white border-none hover:bg-updateColor"
+              >
+                Update
+              </Link>
+            )}
             <button
               onClick={handelPropertyDelete}
               className="btn flex-1 text-white bg-deleteColor border-none hover:bg-deleteColor"
