@@ -13,6 +13,7 @@ import AllProperties from "../pages/AllProperties/AllProperties";
 import AgentProfile from "../pages/Dashboard/Agent/AgentProfile";
 import AgentAddProperty from "../pages/Dashboard/Agent/AgentAddProperty";
 import AgentAddedProperties from "../pages/Dashboard/Agent/AgentAddedProperties";
+import AgentUpdateProperty from "../pages/Dashboard/Agent/AgentUpdateProperty";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -96,6 +97,14 @@ const Router = ({ children }) => {
               element: (
                 <AgentRouter>
                   <h1>Requested Properties</h1>
+                </AgentRouter>
+              ),
+            },
+            {
+              path: "/dashboard/agent/update-property/:id",
+              element: (
+                <AgentRouter>
+                  <AgentUpdateProperty></AgentUpdateProperty>
                 </AgentRouter>
               ),
             },

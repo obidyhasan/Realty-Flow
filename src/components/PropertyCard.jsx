@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { showErrorToast, showSuccessToast } from "../utility/ShowToast";
 import useMyProperties from "../hooks/useMyProperties";
+import { Link } from "react-router-dom";
 
 const PropertyCard = ({ property, fromAgent }) => {
   const { _id, image, title, location, agent, verificationStatus, priceRange } =
@@ -29,7 +30,6 @@ const PropertyCard = ({ property, fromAgent }) => {
             if (res.data.deletedCount) {
               refetch();
               showSuccessToast("Property delete successfully");
-              console.log(res.data);
             }
           })
           .catch((error) => {
@@ -79,12 +79,13 @@ const PropertyCard = ({ property, fromAgent }) => {
         </div>
         {fromAgent ? (
           <div className="flex gap-3 ">
-            <button
+            <Link
+              to={`/dashboard/agent/update-property/${_id}`}
               disabled={verificationStatus === "Rejected"}
               className="btn flex-1 bg-updateColor text-white border-none hover:bg-updateColor"
             >
               Update
-            </button>
+            </Link>
             <button
               onClick={handelPropertyDelete}
               className="btn flex-1 text-white bg-deleteColor border-none hover:bg-deleteColor"
