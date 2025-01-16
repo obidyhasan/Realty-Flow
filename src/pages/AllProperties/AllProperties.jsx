@@ -4,7 +4,7 @@ import useAllProperties from "../../hooks/useAllProperties";
 import PropertyCard from "../../components/PropertyCard";
 
 const AllProperties = () => {
-  const [properties] = useAllProperties();
+  const [properties, isPending] = useAllProperties();
 
   return (
     <div>
@@ -29,14 +29,30 @@ const AllProperties = () => {
         </div>
 
         {/* all properties card */}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {properties.map((property) => (
-            <PropertyCard
-              key={property._id}
-              property={property}
-              fromAgent={false}
-            ></PropertyCard>
-          ))}
+        <div>
+          {isPending ? (
+            <div className="my-20 flex items-center justify-center">
+              <span className="loading loading-spinner loading-lg"></span>
+            </div>
+          ) : (
+            <div>
+              {properties.length ? (
+                <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                  {properties.map((property) => (
+                    <PropertyCard
+                      key={property._id}
+                      property={property}
+                      fromAgent={false}
+                    ></PropertyCard>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center font-semibold text-xl border p-4 rounded-md border-base-200">
+                  <h1>Properties Not Found</h1>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
