@@ -1,10 +1,30 @@
 import { FiSearch } from "react-icons/fi";
 import Headline from "../../components/Headline";
-import useAllProperties from "../../hooks/useAllProperties";
 import PropertyCard from "../../components/PropertyCard";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 const AllProperties = () => {
-  const [properties, isPending] = useAllProperties();
+  // const [properties, isPending] = useAllProperties();
+
+  const axiosSecure = useAxiosSecure();
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState(false);
+
+  const { data: properties = [], isPending } = useQuery({
+    queryKey: ["all-properties", search, sort],
+    queryFn: async () => {
+      const res = await axiosSecure.get(
+        `/api/all-properties?search=${search}&sort=${sort}`
+      );
+      return res.data;
+    },
+  });
+
+  function handelSearchFunction(e) {
+    setSearch(e.target.value);
+  }
 
   return (
     <div>
@@ -19,10 +39,20 @@ const AllProperties = () => {
           {/* Search functionality */}
           <div className="flex justify-center items-center gap-4 mt-8 sm:flex-row flex-col">
             <label className="input input-bordered rounded-full flex items-center gap-2 w-full max-w-2xl">
-              <input type="text" className="grow w-full" placeholder="Search" />
+              <input
+                onChange={handelSearchFunction}
+                type="text"
+                className="grow w-full"
+                placeholder="Search by location"
+              />
               <FiSearch />
             </label>
-            <button className="btn rounded-full bg-primary-light border-primary hover:bg-primary hover:border-primary">
+            <button
+              onClick={() => setSort(!sort)}
+              className={`btn rounded-full border-primary hover:bg-primary hover:border-primary ${
+                sort ? "bg-primary" : "bg-primary-light"
+              }`}
+            >
               Sort By Price
             </button>
           </div>
@@ -47,7 +77,7 @@ const AllProperties = () => {
                   ))}
                 </div>
               ) : (
-                <div className="text-center font-semibold text-xl border p-4 rounded-md border-base-200">
+                <div className="mt-10 text-center font-semibold text-xl border p-4 rounded-md border-base-200">
                   <h1>Properties Not Found</h1>
                 </div>
               )}
