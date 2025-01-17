@@ -5,12 +5,14 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
 import { useState } from "react";
+import useUser from "../../../hooks/useUser";
 
 const IMAGE_HOSTING_KEY = import.meta.env.VITE_imgbb_api_key;
 const IMAGE_HOSTING_API = `https://api.imgbb.com/1/upload?key=${IMAGE_HOSTING_KEY}`;
 
 const AgentAddProperty = () => {
   const { user } = useAuth();
+  const [userInfo] = useUser();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const [uploading, setUploading] = useState(false);
@@ -171,19 +173,28 @@ const AgentAddProperty = () => {
               />
             </div>
           </div>
-          <button
-            disabled={uploading ? true : false}
-            className="mt-5 btn bg-primary hover:bg-primary-light border-none disabled:bg-primary disabled:text-dark-01"
-          >
-            {uploading ? (
-              <>
-                <span className="loading loading-spinner"></span> Adding Your
-                Property
-              </>
-            ) : (
-              "Add Your Property"
-            )}
-          </button>
+          {userInfo?.status === "Fraud" ? (
+            <button
+              disabled={true}
+              className="mt-5 btn bg-primary hover:bg-primary-light border-none  disabled:text-dark-01"
+            >
+              Add Your Property
+            </button>
+          ) : (
+            <button
+              disabled={uploading ? true : false}
+              className="mt-5 btn bg-primary hover:bg-primary-light border-none disabled:bg-primary "
+            >
+              {uploading ? (
+                <>
+                  <span className="loading loading-spinner"></span> Adding Your
+                  Property
+                </>
+              ) : (
+                "Add Your Property"
+              )}
+            </button>
+          )}
         </form>
       </div>
     </div>

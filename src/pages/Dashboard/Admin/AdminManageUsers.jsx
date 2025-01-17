@@ -62,8 +62,19 @@ const AdminManageUsers = () => {
     );
   }
 
-  function handelMarkAsFraud(id) {
-    console.log(id);
+  function handelMarkAsFraud(user) {
+    axiosSecure
+      .patch(`/api/users/status/${user?.email}`, { status: "Fraud" })
+      .then((res) => {
+        if (res.data.matchedCount) {
+          refetch();
+          showSuccessToast("Mark as fraud successfully");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        showErrorToast(error.message);
+      });
   }
 
   function handelUserDelete(user) {
@@ -127,33 +138,46 @@ const AdminManageUsers = () => {
                         </td>
                         <td>{user?.email}</td>
                         <td>
-                          {user?.role !== "Admin" ? (
-                            <button
-                              onClick={() => handelMakeAdmin(user?._id)}
-                              className="btn btn-sm text-xs"
-                            >
-                              Make Admin
-                            </button>
+                          {user?.status === "Fraud" ? (
+                            <p className="badge badge-lg">{user?.status}</p>
                           ) : (
-                            <p className="badge badge-lg">{user?.role}</p>
+                            <div>
+                              {user?.role !== "Admin" ? (
+                                <button
+                                  onClick={() => handelMakeAdmin(user?._id)}
+                                  className="btn btn-sm text-xs"
+                                >
+                                  Make Admin
+                                </button>
+                              ) : (
+                                <p className="badge badge-lg">{user?.role}</p>
+                              )}
+                            </div>
                           )}
                         </td>
                         <td>
-                          {user?.role !== "Agent" ? (
-                            <button
-                              onClick={() => handelMakeAgent(user?._id)}
-                              className="btn btn-sm text-xs"
-                            >
-                              Make Agent
-                            </button>
+                          {user?.status === "Fraud" ? (
+                            <p className="badge badge-lg">{user?.status}</p>
                           ) : (
-                            <p className="badge badge-lg">{user?.role}</p>
+                            <div>
+                              {user?.role !== "Agent" ? (
+                                <button
+                                  onClick={() => handelMakeAgent(user?._id)}
+                                  className="btn btn-sm text-xs"
+                                >
+                                  Make Agent
+                                </button>
+                              ) : (
+                                <p className="badge badge-lg">{user?.role}</p>
+                              )}
+                            </div>
                           )}
                         </td>
                         <td>
-                          {user?.role === "Agent" ? (
+                          {user?.role === "Agent" &&
+                          user?.status !== "Fraud" ? (
                             <button
-                              onClick={() => handelMarkAsFraud(user?._id)}
+                              onClick={() => handelMarkAsFraud(user)}
                               className="btn btn-sm text-xs"
                             >
                               Mark as Fraud
