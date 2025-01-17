@@ -43,6 +43,7 @@ const AgentUpdateProperty = () => {
         max: property?.priceRange?.max || "",
         name: user?.displayName || "",
         email: user?.email || "",
+        description: property?.description || "",
       });
     }
   }, [isPending, reset, property, user]);
@@ -83,6 +84,7 @@ const AgentUpdateProperty = () => {
         min: parseFloat(data.min),
         max: parseFloat(data.max),
       },
+      description: data.description,
     };
 
     axiosSecure
@@ -212,6 +214,18 @@ const AgentUpdateProperty = () => {
                   required
                 />
               </div>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Property Description</span>
+              </label>
+
+              <textarea
+                {...register("description")}
+                className="textarea textarea-bordered min-h-28"
+                required
+                placeholder="description"
+              ></textarea>
             </div>
             <button
               disabled={uploading ? true : false}

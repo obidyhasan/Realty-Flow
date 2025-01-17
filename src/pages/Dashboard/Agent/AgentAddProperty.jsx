@@ -174,6 +174,7 @@ const AgentAddProperty = () => {
               />
             </div>
           </div>
+          {/* Description */}
           <div className="form-control">
             <label className="label">
               <span className="label-text">Property Description</span>

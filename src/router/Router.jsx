@@ -18,6 +18,8 @@ import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 import AdminManageProperties from "../pages/Dashboard/Admin/AdminManageProperties";
 import AdminManageUsers from "../pages/Dashboard/Admin/AdminManageUsers";
 import PropertyDetails from "../pages/PropertyDetails.jsx/PropertyDetails";
+import UserWishlist from "../pages/Dashboard/User/UserWishlist";
+import UserProfile from "../pages/Dashboard/User/UserProfile";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -57,11 +59,19 @@ const Router = ({ children }) => {
             // User Route
             {
               path: "/dashboard/user/profile",
-              element: <h1>User Profile</h1>,
+              element: (
+                <PrivateRouter>
+                  <UserProfile></UserProfile>
+                </PrivateRouter>
+              ),
             },
             {
               path: "/dashboard/user/wishlist",
-              element: <h1>Wishlist</h1>,
+              element: (
+                <PrivateRouter>
+                  <UserWishlist></UserWishlist>
+                </PrivateRouter>
+              ),
             },
             {
               path: "/dashboard/user/property-bought",
