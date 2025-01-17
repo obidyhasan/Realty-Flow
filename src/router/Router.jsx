@@ -17,6 +17,7 @@ import AgentUpdateProperty from "../pages/Dashboard/Agent/AgentUpdateProperty";
 import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 import AdminManageProperties from "../pages/Dashboard/Admin/AdminManageProperties";
 import AdminManageUsers from "../pages/Dashboard/Admin/AdminManageUsers";
+import PropertyDetails from "../pages/PropertyDetails.jsx/PropertyDetails";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -34,6 +35,14 @@ const Router = ({ children }) => {
           element: (
             <PrivateRouter>
               <AllProperties></AllProperties>
+            </PrivateRouter>
+          ),
+        },
+        {
+          path: "/property-details/:id",
+          element: (
+            <PrivateRouter>
+              <PropertyDetails></PropertyDetails>
             </PrivateRouter>
           ),
         },

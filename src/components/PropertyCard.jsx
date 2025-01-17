@@ -97,9 +97,12 @@ const PropertyCard = ({ property, fromAgent }) => {
             </button>
           </div>
         ) : (
-          <button className="btn w-full bg-primary border-none hover:bg-primary-light">
+          <Link
+            to={`/property-details/${_id}`}
+            className="btn w-full bg-primary border-none hover:bg-primary-light"
+          >
             View Details
-          </button>
+          </Link>
         )}
       </div>
     </div>
