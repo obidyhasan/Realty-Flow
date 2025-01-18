@@ -1,10 +1,37 @@
 import PropTypes from "prop-types";
 import { FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { showConfirmDialog } from "../utility/SweetAlert";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { showErrorToast, showSuccessToast } from "../utility/ShowToast";
 
-const WishlistCard = ({ property, wishlistPropertyId }) => {
+const WishlistCard = ({ property, wishlistPropertyId, refetch }) => {
+  const axiosSecure = useAxiosSecure();
   const { image, title, location, agent, verificationStatus, priceRange } =
     property;
+
+  function handelDeleteWishProperty() {
+    showConfirmDialog(
+      "Are you sure to delete this property?",
+      "Delete it"
+    ).then((res) => {
+      if (res.isConfirmed) {
+        axiosSecure
+          .delete(`/api/wishlist/${wishlistPropertyId}`)
+          .then((res) => {
+            if (res.data.deletedCount) {
+              showSuccessToast("Property delete successfully");
+              refetch();
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            showErrorToast(error.message);
+          });
+      }
+    });
+  }
+
   return (
     <div className="p-4 flex flex-col border border-base-200 rounded-xl">
       <div className="flex-1">
@@ -49,7 +76,10 @@ const WishlistCard = ({ property, wishlistPropertyId }) => {
           >
             Make an Offer
           </Link>
-          <button className="btn flex-1 text-white bg-deleteColor border-none hover:bg-deleteColor">
+          <button
+            onClick={handelDeleteWishProperty}
+            className="btn flex-1 text-white bg-deleteColor border-none hover:bg-deleteColor"
+          >
             Remove
           </button>
         </div>
@@ -60,6 +90,7 @@ const WishlistCard = ({ property, wishlistPropertyId }) => {
 
 WishlistCard.propTypes = {
   property: PropTypes.object,
+  refetch: PropTypes.func,
   wishlistPropertyId: PropTypes.string,
 };
 
