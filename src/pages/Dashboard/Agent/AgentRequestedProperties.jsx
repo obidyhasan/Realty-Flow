@@ -3,18 +3,39 @@ import TitleSection from "../../../components/TitleSection";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
 
 const AgentRequestedProperties = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data: properties = [], isPending } = useQuery({
+  const {
+    data: properties = [],
+    isPending,
+    refetch,
+  } = useQuery({
     queryKey: ["requested-properties", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/api/makeOffer/agent/${user?.email}`);
       return res.data;
     },
   });
+
+  function handelPropertyAccept() {}
+  function handelPropertyReject(id) {
+    axiosSecure
+      .patch(`/api/makeOffer/status/${id}`, { status: "Rejected" })
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          showSuccessToast("Property offer rejected");
+          refetch();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        showErrorToast(error.message);
+      });
+  }
 
   return (
     <div>
@@ -78,10 +99,20 @@ const AgentRequestedProperties = () => {
                         <td>
                           {property?.status === "Pending" ? (
                             <div className="flex gap-2">
-                              <button className="btn btn-sm btn-outline text-xs btn-success">
+                              <button
+                                onClick={() =>
+                                  handelPropertyAccept(property._id)
+                                }
+                                className="btn btn-sm btn-outline text-xs btn-success"
+                              >
                                 Accept
                               </button>
-                              <button className="btn btn-sm btn-outline text-xs btn-error">
+                              <button
+                                onClick={() =>
+                                  handelPropertyReject(property._id)
+                                }
+                                className="btn btn-sm btn-outline text-xs btn-error"
+                              >
                                 Reject
                               </button>
                             </div>
