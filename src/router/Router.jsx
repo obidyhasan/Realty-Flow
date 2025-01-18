@@ -24,6 +24,7 @@ import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer";
 import UserPropertyBought from "../pages/Dashboard/User/UserPropertyBought";
 import AgentRequestedProperties from "../pages/Dashboard/Agent/AgentRequestedProperties";
 import UserCheckout from "../pages/Dashboard/User/UserCheckout";
+import AgentSoldProperties from "../pages/Dashboard/Agent/AgentSoldProperties";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -134,7 +135,7 @@ const Router = ({ children }) => {
               path: "/dashboard/agent/sold-properties",
               element: (
                 <AgentRouter>
-                  <h1>My Sold Properties</h1>
+                  <AgentSoldProperties></AgentSoldProperties>
                 </AgentRouter>
               ),
             },
