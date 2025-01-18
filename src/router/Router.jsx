@@ -25,6 +25,7 @@ import UserPropertyBought from "../pages/Dashboard/User/UserPropertyBought";
 import AgentRequestedProperties from "../pages/Dashboard/Agent/AgentRequestedProperties";
 import UserCheckout from "../pages/Dashboard/User/UserCheckout";
 import AgentSoldProperties from "../pages/Dashboard/Agent/AgentSoldProperties";
+import UserMyReviews from "../pages/Dashboard/User/UserMyReviews";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -104,7 +105,11 @@ const Router = ({ children }) => {
             },
             {
               path: "/dashboard/user/reviews",
-              element: <h1>My Reviews</h1>,
+              element: (
+                <PrivateRouter>
+                  <UserMyReviews></UserMyReviews>
+                </PrivateRouter>
+              ),
             },
             // Agent Router
             {
