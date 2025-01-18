@@ -8,6 +8,8 @@ import useAuth from "../../hooks/useAuth";
 import { useRef, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import useUser from "../../hooks/useUser";
+import TitleSection from "../../components/TitleSection";
+import PropertyReview from "../../components/PropertyReview";
 
 const PropertyDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,6 +26,20 @@ const PropertyDetails = () => {
       return res.data;
     },
   });
+
+  const {
+    data: reviews = [],
+    isPending,
+    refetch,
+  } = useQuery({
+    queryKey: ["property-review", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/api/reviews/property/${id}`);
+      return res.data;
+    },
+  });
+
+  console.log(reviews);
 
   function handelAddToWishlist() {
     const propertyInfo = {
@@ -52,6 +68,7 @@ const PropertyDetails = () => {
 
   function handelRatingSubmit(e) {
     e.preventDefault();
+
     const date = new Date();
     const reviewInfo = {
       rating: rating,
@@ -69,6 +86,7 @@ const PropertyDetails = () => {
         if (res.data.insertedId) {
           showSuccessToast("Added review successfully");
           reviewModal.current.close();
+          refetch();
         }
       })
       .catch((error) => {
@@ -141,6 +159,42 @@ const PropertyDetails = () => {
           </div>
         </div>
       </div>
+
+      {/* Review Section */}
+      <section className="max-w-screen-2xl mx-auto px-5">
+        <div className="my-10">
+          <TitleSection
+            title={"Customer Reviews"}
+            description={
+              "Discover honest reviews from our users about their experiences."
+            }
+          ></TitleSection>
+          <div className="my-10">
+            {isPending ? (
+              <div className="my-10 flex items-center justify-center">
+                <span className="loading loading-spinner loading-lg"></span>
+              </div>
+            ) : (
+              <div>
+                {reviews.length ? (
+                  <div className="mt-10 grid grid-cols-1 gap-5">
+                    {reviews.map((review) => (
+                      <PropertyReview
+                        key={review?._id}
+                        userReview={review}
+                      ></PropertyReview>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center font-semibold text-xl border p-4 rounded-md border-base-200">
+                    <h1>There are no reviews for this property.</h1>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
 
       {/* Review Modal */}
       {/* Open the modal using document.getElementById('ID').showModal() method */}
