@@ -21,7 +21,36 @@ const AgentRequestedProperties = () => {
     },
   });
 
-  function handelPropertyAccept() {}
+  function handelPropertyAccept(id, propertyId) {
+    console.log({ id, propertyId });
+    axiosSecure
+      .patch(`/api/makeOffer/status/${id}`, { status: "Accepted" })
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          //   showSuccessToast("Property offer Accepted");
+          //   refetch();
+
+          axiosSecure
+            .patch(`/api/makeOffer/properties/${propertyId}`, {
+              newStatus: "Rejected",
+              excludedStatus: "Accepted",
+            })
+            .then((result) => {
+              console.log(result);
+              showSuccessToast("Property offer Accepted");
+              refetch();
+            })
+            .catch((error) => {
+              console.log(error);
+              showErrorToast(error.message);
+            });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        showErrorToast(error.message);
+      });
+  }
   function handelPropertyReject(id) {
     axiosSecure
       .patch(`/api/makeOffer/status/${id}`, { status: "Rejected" })
@@ -101,7 +130,10 @@ const AgentRequestedProperties = () => {
                             <div className="flex gap-2">
                               <button
                                 onClick={() =>
-                                  handelPropertyAccept(property._id)
+                                  handelPropertyAccept(
+                                    property._id,
+                                    property?.propertyId
+                                  )
                                 }
                                 className="btn btn-sm btn-outline text-xs btn-success"
                               >

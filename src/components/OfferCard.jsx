@@ -35,9 +35,11 @@ const OfferCard = ({ property }) => {
         <div className="flex gap-3 items-center">
           <h2 className="font-semibold">{agentName}</h2>
         </div>
-        <Link className="btn w-full bg-primary border-none hover:bg-primary-light">
-          Pay Now
-        </Link>
+        {status === "Accepted" && (
+          <Link className="btn w-full bg-primary border-none hover:bg-primary-light">
+            Pay Now
+          </Link>
+        )}
       </div>
     </div>
   );

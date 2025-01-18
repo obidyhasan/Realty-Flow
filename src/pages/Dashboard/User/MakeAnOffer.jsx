@@ -46,6 +46,7 @@ const MakeAnOffer = () => {
     setUploading(true);
     const offerInfo = {
       ...data,
+      propertyId: property?._id,
       offerAmount: parseInt(data.offerAmount),
       status: "Pending",
       agentEmail: property?.agent?.email,
