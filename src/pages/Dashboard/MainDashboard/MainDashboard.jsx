@@ -121,6 +121,14 @@ const MainDashboard = () => {
       >
         Manage Reviews
       </NavLink>
+      <NavLink
+        to={"/dashboard/admin/advertise-property"}
+        className={({ isActive }) =>
+          isActive ? "underline text-dark-01 font-medium" : "text-gray-600"
+        }
+      >
+        Advertise Property
+      </NavLink>
     </div>
   );
 

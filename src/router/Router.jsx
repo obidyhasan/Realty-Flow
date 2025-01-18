@@ -25,6 +25,7 @@ import AgentSoldProperties from "../pages/Dashboard/Agent/AgentSoldProperties";
 import UserMyReviews from "../pages/Dashboard/User/UserMyReviews";
 import Profile from "../pages/Profile/Profile";
 import AdminManageReviews from "../pages/Dashboard/Admin/AdminManageReviews";
+import AdminAdvertiseProperty from "../pages/Dashboard/Admin/AdminAdvertiseProperty";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -173,6 +174,14 @@ const Router = ({ children }) => {
               element: (
                 <AdminRouter>
                   <AdminManageReviews></AdminManageReviews>
+                </AdminRouter>
+              ),
+            },
+            {
+              path: "/dashboard/admin/advertise-property",
+              element: (
+                <AdminRouter>
+                  <AdminAdvertiseProperty></AdminAdvertiseProperty>
                 </AdminRouter>
               ),
             },
