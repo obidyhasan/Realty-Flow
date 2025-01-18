@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import TitleSection from "../../../components/TitleSection";
 import useAuth from "../../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
@@ -11,6 +11,7 @@ const MakeAnOffer = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   const [uploading, setUploading] = useState(false);
   const {
     register,
@@ -56,6 +57,7 @@ const MakeAnOffer = () => {
         if (res.data.insertedId) {
           showSuccessToast("Make an offer done");
           setUploading(false);
+          navigate("/dashboard/user/property-bought", { replace: true });
         }
       })
       .catch((error) => {

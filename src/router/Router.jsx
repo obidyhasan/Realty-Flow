@@ -21,6 +21,7 @@ import PropertyDetails from "../pages/PropertyDetails.jsx/PropertyDetails";
 import UserWishlist from "../pages/Dashboard/User/UserWishlist";
 import UserProfile from "../pages/Dashboard/User/UserProfile";
 import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer";
+import UserPropertyBought from "../pages/Dashboard/User/UserPropertyBought";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -84,7 +85,11 @@ const Router = ({ children }) => {
             },
             {
               path: "/dashboard/user/property-bought",
-              element: <h1>Property Bought</h1>,
+              element: (
+                <PrivateRouter>
+                  <UserPropertyBought></UserPropertyBought>
+                </PrivateRouter>
+              ),
             },
             {
               path: "/dashboard/user/reviews",
