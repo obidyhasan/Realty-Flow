@@ -22,6 +22,7 @@ import UserWishlist from "../pages/Dashboard/User/UserWishlist";
 import UserProfile from "../pages/Dashboard/User/UserProfile";
 import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer";
 import UserPropertyBought from "../pages/Dashboard/User/UserPropertyBought";
+import AgentRequestedProperties from "../pages/Dashboard/Agent/AgentRequestedProperties";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -132,7 +133,7 @@ const Router = ({ children }) => {
               path: "/dashboard/agent/requested-properties",
               element: (
                 <AgentRouter>
-                  <h1>Requested Properties</h1>
+                  <AgentRequestedProperties></AgentRequestedProperties>
                 </AgentRouter>
               ),
             },
