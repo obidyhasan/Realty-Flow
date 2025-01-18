@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import TitleSection from "../../../components/TitleSection";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import UserReviewCard from "../../../components/UserReviewCard";
 
 const UserMyReviews = () => {
   const { user } = useAuth();
@@ -19,12 +20,14 @@ const UserMyReviews = () => {
 
   return (
     <div>
-      <TitleSection
-        title={"My Reviews"}
-        description={
-          "Browse and manage feedback you've received from buyers and clients."
-        }
-      ></TitleSection>
+      <div className="my-5">
+        <TitleSection
+          title={"My Reviews"}
+          description={
+            "Browse and manage feedback you've received from buyers and clients."
+          }
+        ></TitleSection>
+      </div>
       <div className="my-10">
         {isPending ? (
           <div className="my-10 flex items-center justify-center">
@@ -35,7 +38,11 @@ const UserMyReviews = () => {
             {reviews.length ? (
               <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 {reviews.map((review) => (
-                  <h1 key={review._id}>hi</h1>
+                  // todo:
+                  <UserReviewCard
+                    key={review?._id}
+                    review={review}
+                  ></UserReviewCard>
                 ))}
               </div>
             ) : (

@@ -22,12 +22,14 @@ const UserWishlist = () => {
 
   return (
     <div>
-      <TitleSection
-        title={"Wishlist"}
-        description={
-          "Save and manage your favorite properties in one place for easy access and future planning."
-        }
-      ></TitleSection>
+      <div className="my-5">
+        <TitleSection
+          title={"Wishlist"}
+          description={
+            "Save and manage your favorite properties in one place for easy access and future planning."
+          }
+        ></TitleSection>
+      </div>
       <div className="my-10">
         {isPending ? (
           <div className="my-10 flex items-center justify-center">
