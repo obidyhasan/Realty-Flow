@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import { FaLocationArrow } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const WishlistCard = ({ property }) => {
+const WishlistCard = ({ property, wishlistPropertyId }) => {
   const { image, title, location, agent, verificationStatus, priceRange } =
     property;
   return (
@@ -42,9 +43,12 @@ const WishlistCard = ({ property }) => {
           <h2 className="font-semibold">{agent.name}</h2>
         </div>
         <div className="flex gap-3 ">
-          <button className="btn flex-1 bg-updateColor text-white border-none hover:bg-updateColor">
+          <Link
+            to={`/dashboard/user/make-an-offer/${wishlistPropertyId}`}
+            className="btn flex-1 bg-updateColor text-white border-none hover:bg-updateColor"
+          >
             Make an Offer
-          </button>
+          </Link>
           <button className="btn flex-1 text-white bg-deleteColor border-none hover:bg-deleteColor">
             Remove
           </button>
@@ -56,6 +60,7 @@ const WishlistCard = ({ property }) => {
 
 WishlistCard.propTypes = {
   property: PropTypes.object,
+  wishlistPropertyId: PropTypes.string,
 };
 
 export default WishlistCard;

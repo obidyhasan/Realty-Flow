@@ -20,6 +20,7 @@ import AdminManageUsers from "../pages/Dashboard/Admin/AdminManageUsers";
 import PropertyDetails from "../pages/PropertyDetails.jsx/PropertyDetails";
 import UserWishlist from "../pages/Dashboard/User/UserWishlist";
 import UserProfile from "../pages/Dashboard/User/UserProfile";
+import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -70,6 +71,14 @@ const Router = ({ children }) => {
               element: (
                 <PrivateRouter>
                   <UserWishlist></UserWishlist>
+                </PrivateRouter>
+              ),
+            },
+            {
+              path: "/dashboard/user/make-an-offer/:id",
+              element: (
+                <PrivateRouter>
+                  <MakeAnOffer></MakeAnOffer>
                 </PrivateRouter>
               ),
             },

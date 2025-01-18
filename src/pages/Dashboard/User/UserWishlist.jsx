@@ -16,8 +16,6 @@ const UserWishlist = () => {
     },
   });
 
-  console.log(wishlists);
-
   return (
     <div>
       <TitleSection
@@ -38,6 +36,7 @@ const UserWishlist = () => {
                 {wishlists.map((item) => (
                   <WishlistCard
                     key={item._id}
+                    wishlistPropertyId={item._id}
                     property={item.propertyDetails[0]}
                   ></WishlistCard>
                 ))}

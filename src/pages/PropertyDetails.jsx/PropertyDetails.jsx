@@ -7,12 +7,14 @@ import { showErrorToast, showSuccessToast } from "../../utility/ShowToast";
 import useAuth from "../../hooks/useAuth";
 import { useRef, useState } from "react";
 import ReactStars from "react-rating-stars-component";
+import useUser from "../../hooks/useUser";
 
 const PropertyDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const { user } = useAuth();
   const reviewModal = useRef();
+  const [userInfo] = useUser();
   const [rating, setRating] = useState(null);
 
   const { data: property = {} } = useQuery({
@@ -119,20 +121,22 @@ const PropertyDetails = () => {
                   <h2 className="font-semibold">{property?.agent?.name}</h2>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-4">
-                <button
-                  onClick={handelAddToWishlist}
-                  className="btn bg-primary border-none hover:bg-primary-light"
-                >
-                  <BiHeart className="text-xl"></BiHeart> Add to wishlist
-                </button>
-                <button
-                  onClick={() => reviewModal.current.showModal()}
-                  className="btn bg-updateColor border-none "
-                >
-                  Add a Review
-                </button>
-              </div>
+              {userInfo?.role === "User" && (
+                <div className="flex flex-wrap gap-4">
+                  <button
+                    onClick={handelAddToWishlist}
+                    className="btn bg-primary border-none hover:bg-primary-light"
+                  >
+                    <BiHeart className="text-xl"></BiHeart> Add to wishlist
+                  </button>
+                  <button
+                    onClick={() => reviewModal.current.showModal()}
+                    className="btn bg-updateColor border-none "
+                  >
+                    Add a Review
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
