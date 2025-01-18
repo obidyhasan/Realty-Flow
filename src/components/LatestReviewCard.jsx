@@ -5,7 +5,7 @@ const LatestReviewCard = ({ review }) => {
     <div className="border border-base-200 p-4 flex flex-col gap-3 text-dark-01 rounded-xl">
       <div className="flex items-center gap-3">
         <img
-          src={review.reviewerImage}
+          src={review?.reviewerImage}
           className="w-12 h-12 rounded-full object-cover"
           alt=""
         />
@@ -14,7 +14,7 @@ const LatestReviewCard = ({ review }) => {
         </h2>
       </div>
       <hr className="border-base-200" />
-      <h1 className="text-xl font-semibold">{review?.property[0].title}</h1>
+      <h1 className="text-xl font-semibold">{review?.title}</h1>
       <p className="text-gray-500">{review?.review}</p>
     </div>
   );

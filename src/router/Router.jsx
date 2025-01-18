@@ -24,6 +24,7 @@ import UserCheckout from "../pages/Dashboard/User/UserCheckout";
 import AgentSoldProperties from "../pages/Dashboard/Agent/AgentSoldProperties";
 import UserMyReviews from "../pages/Dashboard/User/UserMyReviews";
 import Profile from "../pages/Profile/Profile";
+import AdminManageReviews from "../pages/Dashboard/Admin/AdminManageReviews";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -171,7 +172,7 @@ const Router = ({ children }) => {
               path: "/dashboard/admin/manage-reviews",
               element: (
                 <AdminRouter>
-                  <h1>Manage Reviews</h1>
+                  <AdminManageReviews></AdminManageReviews>
                 </AdminRouter>
               ),
             },

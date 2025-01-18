@@ -78,6 +78,7 @@ const PropertyDetails = () => {
       reviewerImage: user?.photoURL,
       propertyId: property?._id,
       reviewTimestamp: date.getTime(),
+      title: property?.title,
     };
 
     axiosSecure
