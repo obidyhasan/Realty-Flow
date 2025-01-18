@@ -23,6 +23,7 @@ import UserProfile from "../pages/Dashboard/User/UserProfile";
 import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer";
 import UserPropertyBought from "../pages/Dashboard/User/UserPropertyBought";
 import AgentRequestedProperties from "../pages/Dashboard/Agent/AgentRequestedProperties";
+import UserCheckout from "../pages/Dashboard/User/UserCheckout";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -89,6 +90,14 @@ const Router = ({ children }) => {
               element: (
                 <PrivateRouter>
                   <UserPropertyBought></UserPropertyBought>
+                </PrivateRouter>
+              ),
+            },
+            {
+              path: "/dashboard/user/checkout/:id",
+              element: (
+                <PrivateRouter>
+                  <UserCheckout></UserCheckout>
                 </PrivateRouter>
               ),
             },

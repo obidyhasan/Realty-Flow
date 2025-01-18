@@ -3,7 +3,8 @@ import { FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const OfferCard = ({ property }) => {
-  const { image, title, location, agentName, offerAmount, status } = property;
+  const { _id, image, title, location, agentName, offerAmount, status } =
+    property;
 
   return (
     <div className="p-4 flex flex-col border border-base-200 rounded-xl">
@@ -35,8 +36,19 @@ const OfferCard = ({ property }) => {
         <div className="flex gap-3 items-center">
           <h2 className="font-semibold">{agentName}</h2>
         </div>
+        {status === "Bought" && property?.transactionId && (
+          <h2 className="font-semibold">
+            Transaction Id :{" "}
+            <span className="font-medium badge ">
+              {property?.transactionId}
+            </span>
+          </h2>
+        )}
         {status === "Accepted" && (
-          <Link className="btn w-full bg-primary border-none hover:bg-primary-light">
+          <Link
+            to={`/dashboard/user/checkout/${_id}`}
+            className="btn w-full bg-primary border-none hover:bg-primary-light"
+          >
             Pay Now
           </Link>
         )}
