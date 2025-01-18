@@ -8,7 +8,7 @@ const MainDashboard = () => {
   const userLink = (
     <div className="flex flex-col gap-3">
       <NavLink
-        to={"/dashboard/user/profile"}
+        to={"/dashboard/profile"}
         className={({ isActive }) =>
           isActive ? "underline text-dark-01 font-medium" : "text-gray-600"
         }
@@ -45,7 +45,7 @@ const MainDashboard = () => {
   const agentLink = (
     <div className="flex flex-col gap-3">
       <NavLink
-        to={"/dashboard/agent/profile"}
+        to={"/dashboard/profile"}
         className={({ isActive }) =>
           isActive ? "underline text-dark-01 font-medium" : "text-gray-600"
         }
@@ -90,7 +90,7 @@ const MainDashboard = () => {
   const adminLink = (
     <div className="flex flex-col gap-3">
       <NavLink
-        to={"/dashboard/admin/profile"}
+        to={"/dashboard/profile"}
         className={({ isActive }) =>
           isActive ? "underline text-dark-01 font-medium" : "text-gray-600"
         }

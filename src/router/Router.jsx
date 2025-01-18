@@ -10,22 +10,20 @@ import Home from "../pages/Home/Home";
 import AgentRouter from "./AgentRouter";
 import AdminRouter from "./AdminRouter";
 import AllProperties from "../pages/AllProperties/AllProperties";
-import AgentProfile from "../pages/Dashboard/Agent/AgentProfile";
 import AgentAddProperty from "../pages/Dashboard/Agent/AgentAddProperty";
 import AgentAddedProperties from "../pages/Dashboard/Agent/AgentAddedProperties";
 import AgentUpdateProperty from "../pages/Dashboard/Agent/AgentUpdateProperty";
-import AdminProfile from "../pages/Dashboard/Admin/AdminProfile";
 import AdminManageProperties from "../pages/Dashboard/Admin/AdminManageProperties";
 import AdminManageUsers from "../pages/Dashboard/Admin/AdminManageUsers";
 import PropertyDetails from "../pages/PropertyDetails.jsx/PropertyDetails";
 import UserWishlist from "../pages/Dashboard/User/UserWishlist";
-import UserProfile from "../pages/Dashboard/User/UserProfile";
 import MakeAnOffer from "../pages/Dashboard/User/MakeAnOffer";
 import UserPropertyBought from "../pages/Dashboard/User/UserPropertyBought";
 import AgentRequestedProperties from "../pages/Dashboard/Agent/AgentRequestedProperties";
 import UserCheckout from "../pages/Dashboard/User/UserCheckout";
 import AgentSoldProperties from "../pages/Dashboard/Agent/AgentSoldProperties";
 import UserMyReviews from "../pages/Dashboard/User/UserMyReviews";
+import Profile from "../pages/Profile/Profile";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -64,10 +62,10 @@ const Router = ({ children }) => {
           children: [
             // User Route
             {
-              path: "/dashboard/user/profile",
+              path: "/dashboard/profile",
               element: (
                 <PrivateRouter>
-                  <UserProfile></UserProfile>
+                  <Profile></Profile>
                 </PrivateRouter>
               ),
             },
@@ -113,14 +111,6 @@ const Router = ({ children }) => {
             },
             // Agent Router
             {
-              path: "/dashboard/agent/profile",
-              element: (
-                <AgentRouter>
-                  <AgentProfile></AgentProfile>
-                </AgentRouter>
-              ),
-            },
-            {
               path: "/dashboard/agent/add-property",
               element: (
                 <AgentRouter>
@@ -161,14 +151,6 @@ const Router = ({ children }) => {
               ),
             },
             // Admin Router
-            {
-              path: "/dashboard/admin/profile",
-              element: (
-                <AdminRouter>
-                  <AdminProfile></AdminProfile>
-                </AdminRouter>
-              ),
-            },
             {
               path: "/dashboard/admin/manage-properties",
               element: (

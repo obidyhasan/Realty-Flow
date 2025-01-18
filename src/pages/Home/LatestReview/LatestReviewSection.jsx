@@ -14,8 +14,6 @@ const LatestReviewSection = () => {
     },
   });
 
-  console.log(reviews);
-
   return (
     <div className="max-w-screen-2xl mx-auto my-10 px-5">
       <div className="">

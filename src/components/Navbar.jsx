@@ -29,7 +29,7 @@ const Navbar = () => {
       </NavLink>
       {user && (
         <NavLink
-          to={"/dashboard"}
+          to={"/dashboard/profile"}
           className={({ isActive }) =>
             isActive
               ? " underline-offset-2 text-dark-01 font-medium"
