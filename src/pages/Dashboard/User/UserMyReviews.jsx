@@ -8,7 +8,11 @@ const UserMyReviews = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data: reviews = [], isPending } = useQuery({
+  const {
+    data: reviews = [],
+    isPending,
+    refetch,
+  } = useQuery({
     queryKey: ["my-reviews", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/api/reviews/${user?.email}`);
@@ -42,6 +46,7 @@ const UserMyReviews = () => {
                   <UserReviewCard
                     key={review?._id}
                     review={review}
+                    refetch={refetch}
                   ></UserReviewCard>
                 ))}
               </div>
