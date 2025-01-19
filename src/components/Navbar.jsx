@@ -84,13 +84,18 @@ const Navbar = () => {
           <div className="">
             {user ? (
               <div className="flex items-center justify-center gap-2">
-                <figure>
-                  <img
-                    src={`${user?.photoURL}`}
-                    className="w-11 h-11 object-cover rounded-full border"
-                    alt=""
-                  />
-                </figure>
+                <div className="flex gap-2 items-center">
+                  <p className="hidden sm:flex border border-base-200 p-2 rounded-full font-semibold">
+                    {user?.displayName}
+                  </p>
+                  <figure>
+                    <img
+                      src={`${user?.photoURL}`}
+                      className="w-11 h-11 object-cover rounded-full border"
+                      alt=""
+                    />
+                  </figure>
+                </div>
                 <button
                   onClick={() => handelUserLogout()}
                   to={"/login"}

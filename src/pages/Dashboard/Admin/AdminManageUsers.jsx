@@ -63,18 +63,24 @@ const AdminManageUsers = () => {
   }
 
   function handelMarkAsFraud(user) {
-    axiosSecure
-      .patch(`/api/users/status/${user?.email}`, { status: "Fraud" })
-      .then((res) => {
-        if (res.data.matchedCount) {
-          refetch();
-          showSuccessToast("Mark as fraud successfully");
+    showConfirmDialog("Are you want to make it fraud?", "Make Fraud").then(
+      (res) => {
+        if (res.isConfirmed) {
+          axiosSecure
+            .patch(`/api/users/status/${user?.email}`, { status: "Fraud" })
+            .then((res) => {
+              if (res.data.matchedCount) {
+                refetch();
+                showSuccessToast("Mark as fraud successfully");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              showErrorToast(error.message);
+            });
         }
-      })
-      .catch((error) => {
-        console.log(error);
-        showErrorToast(error.message);
-      });
+      }
+    );
   }
 
   function handelUserDelete(user) {
