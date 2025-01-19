@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import PropertyCard from "../../../components/PropertyCard";
 import TitleSection from "../../../components/TitleSection";
 import useMyProperties from "../../../hooks/useMyProperties";
@@ -7,6 +8,9 @@ const AgentAddedProperties = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Added Properties</title>
+      </Helmet>
       <div className="my-5">
         <TitleSection
           title={"Manage Your Properties"}

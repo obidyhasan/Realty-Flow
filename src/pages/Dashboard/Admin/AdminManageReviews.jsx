@@ -2,6 +2,7 @@ import ManageReviewCard from "../../../components/ManageReviewCard";
 import TitleSection from "../../../components/TitleSection";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const AdminManageReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -20,6 +21,9 @@ const AdminManageReviews = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Manage Reviews</title>
+      </Helmet>
       <div className="my-5">
         <TitleSection
           title={"Manage Reviews"}

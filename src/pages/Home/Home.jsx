@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import AdvertisementSection from "./AdvertisementSection/AdvertisementSection";
 import BannerSection from "./BannerSection/BannerSection";
 import FAQSection from "./FAQSection/FAQSection";
@@ -7,6 +8,9 @@ import ServiceSection from "./ServiceSection/ServiceSection";
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Real Estate Platform</title>
+      </Helmet>
       <BannerSection></BannerSection>
       <AdvertisementSection></AdvertisementSection>
       <ServiceSection></ServiceSection>

@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { MdDelete } from "react-icons/md";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
 import { showConfirmDialog } from "../../../utility/SweetAlert";
+import { Helmet } from "react-helmet";
 
 const AdminManageUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -106,6 +107,9 @@ const AdminManageUsers = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Manage Users</title>
+      </Helmet>
       <TitleSection
         title={"Manage Users Efficiently"}
         description={

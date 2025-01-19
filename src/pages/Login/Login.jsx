@@ -5,6 +5,7 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { showErrorToast, showSuccessToast } from "../../utility/ShowToast";
 import SocialLogin from "../../components/SocialLogin";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [loadingBtn, setLoadingBtn] = useState(false);
@@ -36,6 +37,9 @@ const Login = () => {
 
   return (
     <div className="w-full relative min-h-screen font-poppins flex flex-col md:gap-0 md:flex-row">
+      <Helmet>
+        <title>Realty Flow - Login</title>
+      </Helmet>
       <div className="md:w-3/5">
         <img
           src="https://i.ibb.co.com/ZdCN3Tw/apartment-building-city-with-copy-space.jpg"

@@ -3,6 +3,7 @@ import TitleSection from "../../../components/TitleSection";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const AgentSoldProperties = () => {
   const { user } = useAuth();
@@ -23,6 +24,9 @@ const AgentSoldProperties = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Sold Properties</title>
+      </Helmet>
       <TitleSection
         title={"My Sold Properties"}
         description={

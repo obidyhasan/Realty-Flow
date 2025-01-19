@@ -10,6 +10,7 @@ import ReactStars from "react-rating-stars-component";
 import useUser from "../../hooks/useUser";
 import TitleSection from "../../components/TitleSection";
 import PropertyReview from "../../components/PropertyReview";
+import { Helmet } from "react-helmet";
 
 const PropertyDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -98,6 +99,10 @@ const PropertyDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Property Details</title>
+      </Helmet>
+
       <div className="max-w-screen-2xl mx-auto py-10 px-5">
         {/* <div className="border border-base-200 p-5 rounded-md"></div> */}
 

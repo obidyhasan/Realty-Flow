@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
+import { Helmet } from "react-helmet";
 
 const MakeAnOffer = () => {
   const { id } = useParams();
@@ -72,6 +73,9 @@ const MakeAnOffer = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Make An Offer</title>
+      </Helmet>
       <div className="my-5">
         <TitleSection
           title={"Make An Offer"}

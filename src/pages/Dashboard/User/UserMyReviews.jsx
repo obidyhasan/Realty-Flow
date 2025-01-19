@@ -3,6 +3,7 @@ import TitleSection from "../../../components/TitleSection";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import UserReviewCard from "../../../components/UserReviewCard";
+import { Helmet } from "react-helmet";
 
 const UserMyReviews = () => {
   const { user } = useAuth();
@@ -24,6 +25,9 @@ const UserMyReviews = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - My Reviews</title>
+      </Helmet>
       <div className="my-5">
         <TitleSection
           title={"My Reviews"}

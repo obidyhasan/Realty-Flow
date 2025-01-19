@@ -3,6 +3,7 @@ import OfferCard from "../../../components/OfferCard";
 import TitleSection from "../../../components/TitleSection";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const UserPropertyBought = () => {
   const { user } = useAuth();
@@ -18,6 +19,9 @@ const UserPropertyBought = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Property Bought</title>
+      </Helmet>
       <div className="my-5">
         <TitleSection
           title={"Property Bought"}

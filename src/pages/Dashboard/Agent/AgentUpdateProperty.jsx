@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
+import { Helmet } from "react-helmet";
 
 const IMAGE_HOSTING_KEY = import.meta.env.VITE_imgbb_api_key;
 const IMAGE_HOSTING_API = `https://api.imgbb.com/1/upload?key=${IMAGE_HOSTING_KEY}`;
@@ -108,6 +109,9 @@ const AgentUpdateProperty = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Update Properties</title>
+      </Helmet>
       <div className="my-5">
         <TitleSection
           title={"Modify Property Details"}

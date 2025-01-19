@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
 import { useState } from "react";
 import useUser from "../../../hooks/useUser";
+import { Helmet } from "react-helmet";
 
 const IMAGE_HOSTING_KEY = import.meta.env.VITE_imgbb_api_key;
 const IMAGE_HOSTING_API = `https://api.imgbb.com/1/upload?key=${IMAGE_HOSTING_KEY}`;
@@ -73,6 +74,9 @@ const AgentAddProperty = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Add Property</title>
+      </Helmet>
       <div className="my-5">
         <TitleSection
           title={"Add Your Property"}

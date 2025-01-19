@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import useUser from "../../hooks/useUser";
 
 const Profile = () => {
@@ -5,6 +6,9 @@ const Profile = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Profile</title>
+      </Helmet>
       <div className="flex my-5 flex-col items-center justify-center gap-4">
         <figure>
           <img

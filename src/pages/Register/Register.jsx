@@ -6,6 +6,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { showErrorToast, showSuccessToast } from "../../utility/ShowToast";
 import { useState } from "react";
 import SocialLogin from "../../components/SocialLogin";
+import { Helmet } from "react-helmet";
 
 const IMAGE_HOSTING_KEY = import.meta.env.VITE_imgbb_api_key;
 const IMAGE_HOSTING_API = `https://api.imgbb.com/1/upload?key=${IMAGE_HOSTING_KEY}`;
@@ -94,6 +95,9 @@ const Register = () => {
 
   return (
     <div className="w-full min-h-screen font-poppins flex flex-col md:gap-0 md:flex-row">
+      <Helmet>
+        <title>Realty Flow - Register</title>
+      </Helmet>
       <div className="md:w-3/5">
         <img
           src="https://i.ibb.co.com/ZdCN3Tw/apartment-building-city-with-copy-space.jpg"

@@ -3,6 +3,7 @@ import TitleSection from "../../../components/TitleSection";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import WishlistCard from "../../../components/WishlistCard";
+import { Helmet } from "react-helmet";
 
 const UserWishlist = () => {
   const { user } = useAuth();
@@ -22,6 +23,9 @@ const UserWishlist = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Wishlist</title>
+      </Helmet>
       <div className="my-5">
         <TitleSection
           title={"Wishlist"}

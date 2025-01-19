@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaLocationArrow } from "react-icons/fa";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
+import { Helmet } from "react-helmet";
 
 const AdminManageProperties = () => {
   const { user } = useAuth();
@@ -52,6 +53,9 @@ const AdminManageProperties = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Manage Properties</title>
+      </Helmet>
       <TitleSection
         title={"Centralized Property"}
         description={

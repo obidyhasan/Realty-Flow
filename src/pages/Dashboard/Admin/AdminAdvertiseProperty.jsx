@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { showConfirmDialog } from "../../../utility/SweetAlert";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
+import { Helmet } from "react-helmet";
 
 const AdminAdvertiseProperty = () => {
   const axiosSecure = useAxiosSecure();
@@ -43,6 +44,9 @@ const AdminAdvertiseProperty = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Advertise Property</title>
+      </Helmet>
       <TitleSection
         title={"Advertise Property"}
         description={

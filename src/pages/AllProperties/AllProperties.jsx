@@ -4,6 +4,7 @@ import PropertyCard from "../../components/PropertyCard";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const AllProperties = () => {
   // const [properties, isPending] = useAllProperties();
@@ -28,6 +29,9 @@ const AllProperties = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - All Properties</title>
+      </Helmet>
       <div className="max-w-screen-2xl mx-auto my-10 px-5">
         <div className="">
           <Headline

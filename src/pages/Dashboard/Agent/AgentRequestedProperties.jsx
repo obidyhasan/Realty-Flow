@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { showErrorToast, showSuccessToast } from "../../../utility/ShowToast";
+import { Helmet } from "react-helmet";
 
 const AgentRequestedProperties = () => {
   const { user } = useAuth();
@@ -68,6 +69,9 @@ const AgentRequestedProperties = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Realty Flow - Requested Properties</title>
+      </Helmet>
       <TitleSection
         title={"Requested Properties"}
         description={
