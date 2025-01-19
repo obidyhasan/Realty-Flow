@@ -15,7 +15,7 @@ const LatestReviewCard = ({ review }) => {
       </div>
       <hr className="border-base-200" />
       <h1 className="text-xl font-semibold">{review?.title}</h1>
-      <p className="text-gray-500">{review?.review}</p>
+      <p className="text-gray-500 text-sm">{review?.review}</p>
     </div>
   );
 };

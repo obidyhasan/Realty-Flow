@@ -1,5 +1,6 @@
 import AdvertisementSection from "./AdvertisementSection/AdvertisementSection";
 import BannerSection from "./BannerSection/BannerSection";
+import FAQSection from "./FAQSection/FAQSection";
 import LatestReviewSection from "./LatestReview/LatestReviewSection";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
       <BannerSection></BannerSection>
       <AdvertisementSection></AdvertisementSection>
       <LatestReviewSection></LatestReviewSection>
+      <FAQSection></FAQSection>
     </div>
   );
 };

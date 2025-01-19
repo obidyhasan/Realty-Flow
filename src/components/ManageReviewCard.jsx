@@ -44,7 +44,7 @@ const ManageReviewCard = ({ review, refetch }) => {
           </div>
         </div>
         <hr className="border-base-200" />
-        <p className="text-gray-500">{review?.review}</p>
+        <p className="text-gray-500 text-sm">{review?.review}</p>
       </div>
       <button
         onClick={handelReviewDelete}
