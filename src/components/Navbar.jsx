@@ -71,7 +71,7 @@ const Navbar = () => {
                 {navbarMenuLinks}
               </ul>
             </div>
-            <Link className="flex items-center gap-2">
+            <Link to={"/"} className="flex items-center gap-2">
               <img src={logo} className="hidden sm:flex" alt="" />
               <span className="text-xl sm:text-2xl font-bold text-dark-01">
                 Realty Flow
