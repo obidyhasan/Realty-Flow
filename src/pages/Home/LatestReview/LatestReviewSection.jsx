@@ -23,7 +23,7 @@ const LatestReviewSection = () => {
         ></Headline>
       </div>
 
-      {/* all properties card */}
+      {/* all review card */}
       <div>
         {isPending ? (
           <div className="my-20 flex items-center justify-center">

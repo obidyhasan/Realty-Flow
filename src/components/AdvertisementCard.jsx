@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
 import { FaLocationArrow } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AdvertisementCard = ({ advertisement }) => {
-  const { propertyImage, propertyLocation, priceRange, verificationStatus } =
-    advertisement;
+  const { image, location, priceRange, verificationStatus } = advertisement;
 
   return (
     <div className="transform duration-300 hover:-translate-y-3">
       <div className="text-dark-01">
         <figure>
           <img
-            src={propertyImage}
+            src={image}
             className="w-full h-[220px] object-cover rounded-t-xl "
             alt=""
           />
@@ -20,7 +20,7 @@ const AdvertisementCard = ({ advertisement }) => {
             <div className="flex gap-2 justify-between items-center">
               <h2 className="text-sm font-medium flex flex-wrap text-gray-600 items-center gap-2">
                 <FaLocationArrow className="text-primary"></FaLocationArrow>{" "}
-                <span>{propertyLocation}</span>
+                <span>{location}</span>
               </h2>
               <p className="badge">{verificationStatus}</p>
             </div>
@@ -30,9 +30,12 @@ const AdvertisementCard = ({ advertisement }) => {
               </p>
             </div>
           </div>
-          <button className="btn w-full bg-primary border-none hover:bg-primary-light">
+          <Link
+            to={`/property-details/${advertisement?.propertyId}`}
+            className="btn w-full bg-primary border-none hover:bg-primary-light"
+          >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>

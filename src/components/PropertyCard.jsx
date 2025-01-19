@@ -41,7 +41,7 @@ const PropertyCard = ({ property, fromAgent }) => {
   }
 
   return (
-    <div className="p-4 flex flex-col border border-base-200 rounded-xl">
+    <div className="p-4 flex flex-col border border-base-200 rounded-xl transform hover:translate-y-2 duration-300">
       <div className="flex-1">
         <figure>
           <img
