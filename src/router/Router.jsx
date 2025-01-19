@@ -26,6 +26,7 @@ import UserMyReviews from "../pages/Dashboard/User/UserMyReviews";
 import Profile from "../pages/Profile/Profile";
 import AdminManageReviews from "../pages/Dashboard/Admin/AdminManageReviews";
 import AdminAdvertiseProperty from "../pages/Dashboard/Admin/AdminAdvertiseProperty";
+import UserRouter from "./UserRouter";
 
 const Router = ({ children }) => {
   const router = createBrowserRouter([
@@ -74,41 +75,41 @@ const Router = ({ children }) => {
             {
               path: "/dashboard/user/wishlist",
               element: (
-                <PrivateRouter>
+                <UserRouter>
                   <UserWishlist></UserWishlist>
-                </PrivateRouter>
+                </UserRouter>
               ),
             },
             {
               path: "/dashboard/user/make-an-offer/:id",
               element: (
-                <PrivateRouter>
+                <UserRouter>
                   <MakeAnOffer></MakeAnOffer>
-                </PrivateRouter>
+                </UserRouter>
               ),
             },
             {
               path: "/dashboard/user/property-bought",
               element: (
-                <PrivateRouter>
+                <UserRouter>
                   <UserPropertyBought></UserPropertyBought>
-                </PrivateRouter>
+                </UserRouter>
               ),
             },
             {
               path: "/dashboard/user/checkout/:id",
               element: (
-                <PrivateRouter>
+                <UserRouter>
                   <UserCheckout></UserCheckout>
-                </PrivateRouter>
+                </UserRouter>
               ),
             },
             {
               path: "/dashboard/user/reviews",
               element: (
-                <PrivateRouter>
+                <UserRouter>
                   <UserMyReviews></UserMyReviews>
-                </PrivateRouter>
+                </UserRouter>
               ),
             },
             // Agent Router
