@@ -30,7 +30,6 @@ const CheckoutForm = () => {
       axiosSecure
         .post("/api/create-payment-intent", { price: property?.offerAmount })
         .then((res) => {
-          console.log(res.data);
           setClientSecret(res.data.clientSecret);
         });
     }
@@ -48,7 +47,7 @@ const CheckoutForm = () => {
       setLoadingBtn(false);
       return;
     }
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { error } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
@@ -57,7 +56,6 @@ const CheckoutForm = () => {
       console.log("Payment error", error);
       setErrorMessage(error.message);
     } else {
-      console.log("Payment Method: ", paymentMethod);
       setErrorMessage("");
     }
 
