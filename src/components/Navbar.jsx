@@ -85,7 +85,7 @@ const Navbar = () => {
             {user ? (
               <div className="flex items-center justify-center gap-2">
                 <div className="flex gap-2 items-center">
-                  <p className="hidden sm:flex border border-base-200 px-2 py-3 rounded-full font-semibold">
+                  <p className="hidden sm:flex border border-base-200 py-2 px-3 rounded-full font-semibold">
                     {user?.displayName}
                   </p>
                   <figure>
