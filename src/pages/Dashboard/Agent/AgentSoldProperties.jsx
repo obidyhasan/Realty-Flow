@@ -16,7 +16,10 @@ const AgentSoldProperties = () => {
     },
   });
 
-  console.log(properties);
+  const totalPrice = properties.reduce(
+    (total, item) => total + item?.offerAmount,
+    0
+  );
 
   return (
     <div>
@@ -27,6 +30,15 @@ const AgentSoldProperties = () => {
         }
       ></TitleSection>
 
+      {/* Total Sold Amount */}
+      <div className="mt-5 flex justify-center">
+        <div className="border py-1 px-2 bg-primary-light flex-wrap items-center justify-center rounded-full border-primary flex gap-2 font-medium">
+          Total property sold price:
+          <span className="font-semibold ">$ {totalPrice}</span>
+        </div>
+      </div>
+
+      {/* sold properties */}
       <div className="mt-10 mb-5">
         {isPending ? (
           <div className="my-10 flex items-center justify-center">
