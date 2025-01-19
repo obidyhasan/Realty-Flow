@@ -15,7 +15,7 @@ const LatestReviewSection = () => {
   });
 
   return (
-    <div className="max-w-screen-2xl mx-auto my-10 px-5">
+    <div className="max-w-screen-2xl mx-auto mb-10 mt-16 px-5">
       <div className="">
         <Headline
           headline={"User Feedback"}
