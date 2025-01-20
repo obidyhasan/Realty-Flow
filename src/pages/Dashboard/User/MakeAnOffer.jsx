@@ -69,8 +69,6 @@ const MakeAnOffer = () => {
       });
   };
 
-  // console.log(property);
-
   return (
     <div>
       <Helmet>

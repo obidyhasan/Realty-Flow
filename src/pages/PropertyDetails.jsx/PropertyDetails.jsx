@@ -40,8 +40,6 @@ const PropertyDetails = () => {
     },
   });
 
-  console.log(reviews);
-
   function handelAddToWishlist() {
     const propertyInfo = {
       propertyId: property?._id,

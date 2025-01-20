@@ -23,7 +23,6 @@ const AgentRequestedProperties = () => {
   });
 
   function handelPropertyAccept(id, propertyId) {
-    console.log({ id, propertyId });
     axiosSecure
       .patch(`/api/makeOffer/status/${id}`, { status: "Accepted" })
       .then((res) => {
@@ -36,8 +35,7 @@ const AgentRequestedProperties = () => {
               newStatus: "Rejected",
               excludedStatus: "Accepted",
             })
-            .then((result) => {
-              console.log(result);
+            .then(() => {
               showSuccessToast("Property offer Accepted");
               refetch();
             })

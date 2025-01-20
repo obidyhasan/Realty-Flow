@@ -18,7 +18,6 @@ export const ImageUpload = (imageFile) => {
           // const delete_image_url = result.data?.data?.delete_url;
           const image_url = result.data?.data?.display_url;
           setImageUrl(image_url);
-          console.log(image_url);
         }
       })
       .catch((error) => {

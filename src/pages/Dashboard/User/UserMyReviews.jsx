@@ -21,8 +21,6 @@ const UserMyReviews = () => {
     },
   });
 
-  console.log(reviews);
-
   return (
     <div>
       <Helmet>
