@@ -1,8 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useUser from "../../../hooks/useUser";
+import LoadingLayout from "../../../layouts/LoadingLayout";
 
 const MainDashboard = () => {
-  const [userInfo] = useUser();
+  const [userInfo, isPendingUser] = useUser();
   const role = userInfo?.role;
 
   const userLink = (
@@ -131,6 +132,10 @@ const MainDashboard = () => {
       </NavLink>
     </div>
   );
+
+  if (isPendingUser) {
+    return <LoadingLayout></LoadingLayout>;
+  }
 
   return (
     <div>
