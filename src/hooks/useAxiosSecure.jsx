@@ -16,6 +16,13 @@ const useAxiosSecure = () => {
       // do something before request is sent
       // request interceptor to add authorization header for every secure call to the api
       const token = localStorage.getItem("access-token");
+
+      if (!token) {
+        // if token is not available, you can return a rejected promise
+        // or delay the API call until the token is available
+        return Promise.reject("Token not available yet");
+      }
+
       config.headers.authorization = `Bearer ${token}`;
       return config;
     },
