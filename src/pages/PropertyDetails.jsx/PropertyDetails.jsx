@@ -11,6 +11,7 @@ import useUser from "../../hooks/useUser";
 import TitleSection from "../../components/TitleSection";
 import PropertyReview from "../../components/PropertyReview";
 import { Helmet } from "react-helmet";
+import LoadingLayout from "../../layouts/LoadingLayout";
 
 const PropertyDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -20,7 +21,7 @@ const PropertyDetails = () => {
   const [userInfo] = useUser();
   const [rating, setRating] = useState(null);
 
-  const { data: property = {} } = useQuery({
+  const { data: property = {}, isPending: dataPending } = useQuery({
     queryKey: ["property"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/api/property/${id}`);
@@ -39,6 +40,10 @@ const PropertyDetails = () => {
       return res.data;
     },
   });
+
+  if (dataPending) {
+    return <LoadingLayout></LoadingLayout>;
+  }
 
   function handelAddToWishlist() {
     const propertyInfo = {
