@@ -1,8 +1,5 @@
 # RealtyFlow
 
-**Admin Username:** `realtyadmin@gmail.com`  
-**Admin Password:** `1234A@`
-
 ---
 
 **Live Site URL:** [RealtyFlow Live](https://realty-flow-platform.web.app/)
