@@ -10,7 +10,7 @@ RealtyFlow is a modern real estate platform designed to simplify property buying
 
 ## 🧑‍🚀 Server Site Repository Link:
 
-[Server Site Repository](https://realty-flow-platform.web.app/)
+[Server Site Repository](https://github.com/obidyhasan/Realty-Flow-Server)
 
 ## 🚀 Technologies Used
 
