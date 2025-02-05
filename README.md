@@ -2,7 +2,7 @@
 
 RealtyFlow is a modern real estate platform designed to simplify property buying, selling, and renting. It provides an intuitive user experience for browsing properties, managing listings, and connecting buyers with agents.
 
-![RealtyFlow Screenshot](https://i.ibb.co.com/gMgy12qH/Realty-Flow-Real-Estate-Platfordsm-01-20-2025-06-58-PM.png) <!-- Add your screenshot link here -->
+![RealtyFlow Screenshot](https://i.ibb.co.com/mFS1HHNp/Realty-Flow-Real-Estate-Platform-01-20-202d5-06-58-PM.png) <!-- Add your screenshot link here -->
 
 ## 🌐 Live Site:
 
