@@ -1,50 +1,47 @@
 # RealtyFlow
 
----
+RealtyFlow is a modern, user-friendly real estate platform designed to connect buyers, sellers, and agents seamlessly. It offers advanced property search options, secure authentication, and a mobile-responsive design to ensure a smooth user experience across devices.
 
-**Live Site URL:** [RealtyFlow Live](https://realty-flow-platform.web.app/)
+## Live Site:
 
----
+[RealtyFlow Live Site](https://realty-flow-platform.web.app/)
 
-## Features of RealtyFlow
+## Key Features
 
-1. **User-Friendly Interface**
+- **User-Friendly Interface**  
+  Simple and modern design for effortless navigation.
 
-   - Simple and modern design for effortless navigation.
+- **Property Listings**  
+  Explore detailed property listings with images, descriptions, and prices.
 
-2. **Property Listings**
+- **Advanced Search Options**  
+  Filter properties by location, price range, property type, and more.
 
-   - Explore detailed property listings with images, descriptions, and prices.
+- **Wishlist Feature**  
+  Save your favorite properties for easy access later.
 
-3. **Advanced Search Options**
+- **Make an Offer**  
+  Submit offers directly to property agents for a seamless buying process.
 
-   - Filter properties by location, price range, property type, and more.
+- **Advertise Properties**  
+  Property owners can list and advertise their properties with ease.
 
-4. **Wishlist Feature**
+- **Agent Management**  
+  Dedicated tools for agents to manage properties and offers efficiently.
 
-   - Save your favorite properties for easy access later.
+- **Secure Login System**  
+  Secure authentication for both users and admins using modern practices.
 
-5. **Make an Offer**
+- **Review System**  
+  Add and view reviews for properties and services to enhance credibility.
 
-   - Submit offers directly to property agents for a seamless buying process.
+- **Mobile-Responsive Design**  
+  Fully optimized for desktop, tablet, and mobile devices.
 
-6. **Advertise Properties**
+## Technologies Used
 
-   - Property owners can list and advertise their properties with ease.
-
-7. **Agent Management**
-
-   - Dedicated tools for agents to manage properties and offers efficiently.
-
-8. **Secure Login System**
-
-   - Secure authentication for both users and admins using modern practices.
-
-9. **Review System**
-
-   - Add and view reviews for properties and services to enhance credibility.
-
-10. **Mobile-Responsive Design**
-    - Fully optimized for desktop, tablet, and mobile devices.
-
----
+- **Front-End:** React, Tailwind CSS, DaisyUI
+- **Back-End:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** Firebase Authentication
+- **Additional Tools:** React Router, AOS (Animate on Scroll), Swiper Slider
